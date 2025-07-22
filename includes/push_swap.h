@@ -6,7 +6,7 @@
 /*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 00:30:49 by marvin            #+#    #+#             */
-/*   Updated: 2025/07/22 22:44:41 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/07/22 23:05:34 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ t_cdlist	*cdlst_find_tail(t_cdlist *lst);
 
 int	insert_nil_next(t_cdlist **lst, t_cdlist *new_next);
 int	insert_nil_prev(t_cdlist **lst, t_cdlist *new_prev);
+int	rotate_forward(t_cdlist **lst);
+int	rotate_backward(t_cdlist **lst);
 
 void	print_cdlst(t_cdlist *lst, int stack);
 
