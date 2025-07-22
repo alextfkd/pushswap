@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 22:22:19 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/07/22 15:51:33 by marvin           ###   ########.fr       */
+/*   Updated: 2025/07/22 16:23:18 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,5 +103,29 @@ int	swap_forward(t_cdlist **lst)
 	next_1->next = next_3;
 	next_1->prev = next_2;
 	next_3->prev = next_1;
+	return (0);
+}
+
+// Before: -> NODE_3 -> NODE_2 -> NODE_1 -> nil
+// After: -> NODE_3 -> NODE_1 -> NODE_2 -> nil
+int	swap_backward(t_cdlist **lst)
+{
+	t_cdlist	*nil;
+	t_cdlist	*prev_1;
+	t_cdlist	*prev_2;
+	t_cdlist	*prev_3;
+
+	nil = cdlst_find_nil(*lst);
+	if (nil == NULL)
+		return (1);
+	prev_1 = nil->prev;
+	prev_2 = nil->prev->prev;
+	prev_3 = nil->prev->prev->prev;
+	nil->prev = prev_2;
+	prev_2->next = nil;
+	prev_2->prev = prev_1;
+	prev_1->next = prev_2;
+	prev_1->prev = prev_3;
+	prev_3->next = prev_1;
 	return (0);
 }
