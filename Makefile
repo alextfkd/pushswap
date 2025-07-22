@@ -9,6 +9,7 @@ LIBFT = ./libft/libft.a
 FT_PRINTF = ./ft_printf/libftprintf.a
 
 SRCS = main.c validation.c error.c
+SRCS += cdlst_create.c cdlst_delete.c cdlst_findnode.c cdlst_insert.c cdlst_utils.c
 #SRCS = $(addprefix  $(SRCDIR)/, $(SRCS))
 OBJS = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
 CFLAGS = -Wall -Wextra -Werror
