@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cdlst_insert.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 22:22:19 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/07/22 23:09:53 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/07/22 15:51:33 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,28 @@ int	rotate_backward(t_cdlist **lst)
 	if (new_prev == NULL)
 		return (1);
 	return (insert_nil_next(lst, new_prev));
+}
+
+// Before: -> nil -> NODE_1 -> NODE_2 -> NODE_3 ->
+// After: -> nil -> NODE_2 -> NODE_1 -> NODE_3 ->
+int	swap_forward(t_cdlist **lst)
+{
+	t_cdlist	*nil;
+	t_cdlist	*next_1;
+	t_cdlist	*next_2;
+	t_cdlist	*next_3;
+
+	nil = cdlst_find_nil(*lst);
+	if (nil == NULL)
+		return (1);
+	next_1 = nil->next;
+	next_2 = nil->next->next;
+	next_3 = nil->next->next->next;
+	nil->next = next_2;
+	next_2->next = next_1;
+	next_2->prev = nil;
+	next_1->next = next_3;
+	next_1->prev = next_2;
+	next_3->prev = next_1;
+	return (0);
 }

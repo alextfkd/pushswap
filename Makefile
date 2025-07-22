@@ -1,5 +1,5 @@
 NAME = push_swap
-CC = cc
+CC = cc -g
 GCC = gcc -g
 
 OBJDIR = ./objs
