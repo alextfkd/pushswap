@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 02:52:59 by marvin            #+#    #+#             */
-/*   Updated: 2025/07/22 03:16:25 by marvin           ###   ########.fr       */
+/*   Updated: 2025/07/22 16:40:15 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	_ft_perror_debug(int err_code)
 {
 	int		i;
-	char	*msgs[MAX_ERRNO];	
+	char	*msgs[MAX_ERRNO];
 
 	i = 0;
 	if (err_code == 0)

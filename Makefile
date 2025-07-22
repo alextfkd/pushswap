@@ -5,6 +5,9 @@ GCC = gcc -g
 OBJDIR = ./objs
 SRCDIR = ./srcs
 
+LIBFT = ./libft/libft.a
+FT_PRINTF = ./ft_printf/libftprintf.a
+
 SRCS = main.c validation.c error.c
 #SRCS = $(addprefix  $(SRCDIR)/, $(SRCS))
 OBJS = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
@@ -15,9 +18,12 @@ LIBFLAGS = -lft -lftprintf
 
 VPATH = $(SRCDIR)
 
-all: $(OBJDIR) $(NAME) submodule
+all: $(OBJDIR) $(NAME)
 
-$(NAME): $(OBJS)
+$(OBJDIR):
+	mkdir -p $(OBJDIR)
+
+$(NAME): $(LIBFT) $(FT_PRINTF) $(OBJS)
 	$(CC) $(CFLAGS) $(IFLAGS) $(OBJS)  -o $@ $(LFLAGS) $(LIBFLAGS)
 
 echo :
@@ -27,17 +33,27 @@ $(OBJDIR)/%.o: %.c
 	mkdir -p $(OBJDIR)
 	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 
-$(OBJDIR):
+$(LIBFT):
+	make --directory ./libft/
+
+libft_clean:
+	make --directory ./libft/ clean
+
+$(FT_PRINTF):
+	make --directory ./ft_printf/
+
+ft_printf_clean:
+	make --directory ./ft_printf/ clean
+
+$(OBJDIR)/%.o: %.c
 	mkdir -p $(OBJDIR)
+	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 
-submodule:
-	echo 'submodule called'
-
-clean:
+clean: libft_clean ft_printf_clean
 	rm -f $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) ./libft/libft.a ./ft_printf/libftprintf.a
 
 re: fclean all
 
