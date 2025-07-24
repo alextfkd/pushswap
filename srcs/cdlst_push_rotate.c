@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cdlst_push_rotate.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:47:07 by marvin            #+#    #+#             */
-/*   Updated: 2025/07/22 16:47:58 by marvin           ###   ########.fr       */
+/*   Updated: 2025/07/24 19:01:04 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	push_to_b_stack(t_cdlist *stack_a, t_cdlist *stack_b)
+static int	_push_to_b_stack(t_cdlist *stack_a, t_cdlist *stack_b)
 {
 	t_cdlist	*node;
 
@@ -23,7 +23,7 @@ int	push_to_b_stack(t_cdlist *stack_a, t_cdlist *stack_b)
 	return (0);
 }
 
-int	push_to_a_stack(t_cdlist *stack_a, t_cdlist *stack_b)
+static int	_push_to_a_stack(t_cdlist *stack_a, t_cdlist *stack_b)
 {
 	t_cdlist	*node;
 
@@ -32,6 +32,26 @@ int	push_to_a_stack(t_cdlist *stack_a, t_cdlist *stack_b)
 	stack_a = cdlst_find_head(stack_a);
 	insert_nil_next(&stack_a, node);
 	return (0);
+}
+
+int	push_to_b_stack(t_psstacks **stacks)
+{
+	t_cdlist	*stack_a;
+	t_cdlist	*stack_b;
+
+	stack_a = (*stacks)->stack_a;
+	stack_b = (*stacks)->stack_b;
+	return (_push_to_b_stack(stack_a, stack_b));
+}
+
+int	push_to_a_stack(t_psstacks **stacks)
+{
+	t_cdlist	*stack_a;
+	t_cdlist	*stack_b;
+
+	stack_a = (*stacks)->stack_a;
+	stack_b = (*stacks)->stack_b;
+	return (_push_to_a_stack(stack_a, stack_b));
 }
 
 // Before: -> NODE_1 -> nil -> NODE_2 ->

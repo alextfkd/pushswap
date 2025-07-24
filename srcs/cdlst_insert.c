@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cdlst_insert.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 22:22:19 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/07/22 16:48:35 by marvin           ###   ########.fr       */
+/*   Updated: 2025/07/24 18:58:25 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ int	swap_forward(t_cdlist **lst)
 		return (1);
 	next_1 = nil->next;
 	next_2 = nil->next->next;
+	if (next_2 == nil)
+		return (0);
 	next_3 = nil->next->next->next;
 	nil->next = next_2;
 	next_2->next = next_1;
@@ -88,6 +90,8 @@ int	swap_backward(t_cdlist **lst)
 		return (1);
 	prev_1 = nil->prev;
 	prev_2 = nil->prev->prev;
+	if (prev_2 == nil)
+		return (0);
 	prev_3 = nil->prev->prev->prev;
 	nil->prev = prev_2;
 	prev_2->next = nil;

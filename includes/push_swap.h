@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 00:30:49 by marvin            #+#    #+#             */
-/*   Updated: 2025/07/22 16:38:17 by marvin           ###   ########.fr       */
+/*   Updated: 2025/07/24 18:36:39 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,14 @@ typedef struct	s_cdlist
 	struct s_cdlist	*prev;
 }	t_cdlist;
 
+typedef struct s_psstacks
+{
+	t_cdlist	*stack_a;
+	t_cdlist	*stack_b;
+	int			op_count;
+	int			status;
+}	t_psstacks;
+
 int	validate_args(int argc, char **argv);
 int	ft_perror(int err_code);
 
@@ -67,11 +75,12 @@ int	swap_forward(t_cdlist **lst);
 int	swap_backward(t_cdlist **lst);
 
 void	print_cdlst(t_cdlist *lst, int stack);
-void	print_stacks(t_cdlist *stack_a, t_cdlist *stack_b);
+void	print_stacks(t_psstacks *stacks);
 
 void	del_cdlstnode(t_cdlist *node);
 t_cdlist	*pop_cdlstnode(t_cdlist	*node);
-int	push_to_a_stack(t_cdlist *stack_a, t_cdlist *stack_b);
-int	push_to_b_stack(t_cdlist *stack_a, t_cdlist *stack_b);
+int	push_to_a_stack(t_psstacks **stacks);
+int	push_to_b_stack(t_psstacks **stacks);
 
+t_psstacks	*create_stacks(void);
 #endif

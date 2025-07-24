@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 02:47:26 by marvin            #+#    #+#             */
-/*   Updated: 2025/07/24 08:38:06 by marvin           ###   ########.fr       */
+/*   Updated: 2025/07/24 18:46:47 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,21 +69,16 @@ int	validate_args(int argc, char **argv)
 		status = FT_ENOENT;
 	while (i < argc)
 	{
-		ft_printf("argc = %d", argc);
-		ft_printf("i = :%d ", i);
 		if (ft_is_alphasign(argv[i]) == 0)
 		{
 			status = FT_EIO;
 			break ;
 		}
-		ft_printf("i = :%d ", i);
 		if (ft_check_overflow(argv[i++]) == 1)
 		{
 			status = FT_EOVERFLOW;
 			break ;
 		}
-		ft_printf("i = :%d ", i);
 	}
-	ft_printf("ata");
 	return (status);
 }
