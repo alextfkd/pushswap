@@ -6,7 +6,7 @@
 /*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 22:10:37 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/07/24 18:27:16 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/07/24 19:09:43 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,4 @@ void	print_cdlst(t_cdlist *lst, int stack)
 		}
 		ft_printf("B");
 	}
-}
-
-static void	_print_stacks(t_cdlist *stack_a, t_cdlist *stack_b)
-{
-	print_cdlst(stack_a, STACK_A);
-	ft_printf("| ");
-	print_cdlst(stack_b, STACK_B);
-	ft_printf("\n");
-}
-
-void	print_stacks(t_psstacks *stacks)
-{
-	_print_stacks(stacks->stack_a, stacks->stack_b);
 }
