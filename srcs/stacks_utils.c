@@ -6,7 +6,7 @@
 /*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 19:07:43 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/07/24 21:15:34 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/07/24 21:23:01 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	print_stacks(t_psstacks *stacks)
 	_print_stacks(stacks->stack_a, stacks->stack_b);
 }
 
-int		if_stack_a_sorted(t_psstacks *stacks)
+int	if_stack_a_sorted(t_psstacks *stacks)
 {
 	t_cdlist	*stack_a;
 
@@ -43,7 +43,7 @@ int		if_stack_a_sorted(t_psstacks *stacks)
 	return (1);
 }
 
-int		if_stack_b_sorted(t_psstacks *stacks)
+int	if_stack_b_sorted(t_psstacks *stacks)
 {
 	t_cdlist	*stack_b;
 

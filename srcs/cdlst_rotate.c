@@ -6,7 +6,7 @@
 /*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:47:07 by marvin            #+#    #+#             */
-/*   Updated: 2025/07/24 19:04:24 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/07/24 21:37:07 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,5 @@ int	rotate_backward(t_cdlist **lst)
 	new_prev = pop_cdlstnode(nil->next);
 	if (new_prev == NULL)
 		return (1);
-	return (insert_nil_next(lst, new_prev));
+	return (insert_nil_prev(lst, new_prev));
 }
