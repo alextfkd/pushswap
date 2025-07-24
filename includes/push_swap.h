@@ -6,7 +6,7 @@
 /*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 00:30:49 by marvin            #+#    #+#             */
-/*   Updated: 2025/07/24 19:34:13 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/07/24 21:03:10 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,20 @@ int	push_to_a_stack(t_psstacks **stacks);
 int	push_to_b_stack(t_psstacks **stacks);
 
 t_psstacks	*init_stacks(int argc, char **argv);
+
+int	w_pa(t_psstacks **stacks);
+int	w_pb(t_psstacks **stacks);
+int	w_sa(t_psstacks **stacks);
+int	w_sb(t_psstacks **stacks);
+int	w_ss(t_psstacks **stacks);
+int	w_ra(t_psstacks **stacks);
+int	w_rb(t_psstacks **stacks);
+int	w_rr(t_psstacks **stacks);
+int	w_rra(t_psstacks **stacks);
+int	w_rrb(t_psstacks **stacks);
+int	w_rrr(t_psstacks **stacks);
+
+int		if_stack_a_sorted(t_psstacks *stacks);
+int		if_stack_b_sorted(t_psstacks *stacks);
+int	if_stacks_sorted(t_psstacks *stacks);
 #endif

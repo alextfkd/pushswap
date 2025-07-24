@@ -6,7 +6,7 @@
 /*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 00:19:33 by marvin            #+#    #+#             */
-/*   Updated: 2025/07/24 19:35:20 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/07/24 21:06:37 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,18 @@ int	main(int argc, char **argv)
 	ft_printf("\n");
 	stacks = init_stacks(argc, argv);
 	print_stacks(stacks);
+	w_pb(&stacks);
+	print_stacks(stacks);
+	w_pb(&stacks);
+	print_stacks(stacks);
+	w_ss(&stacks);
+	print_stacks(stacks);
+	if_stack_a_sorted(stacks);
+	w_sb(&stacks);
+	print_stacks(stacks);
+	if_stack_b_sorted(stacks);
+	/*
+	print_stacks(stacks);
 	swap_forward(&(stacks->stack_a));
 	print_stacks(stacks);
 	push_to_b_stack(&stacks);
@@ -84,7 +96,6 @@ int	main(int argc, char **argv)
 	print_stacks(stacks);
 	swap_forward(&(stacks->stack_a));
 	print_stacks(stacks);
-	/*
 	*/
 	return (0);
 }

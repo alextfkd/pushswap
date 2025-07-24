@@ -6,7 +6,7 @@
 /*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 18:23:00 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/07/24 19:36:37 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/07/24 20:16:11 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ static int	_load_args_to_stack_a(int *arr, int len, t_psstacks **stacks)
 }
 
 // STACK A | nil -> (top) -> (top -1) -> ... -> (last) -> (nil)
+// STACK B | nil -> (top) -> (top -1) -> ... -> (last) -> (nil)
 t_psstacks	*init_stacks(int argc, char **argv)
 {
 	t_psstacks	*stacks;
