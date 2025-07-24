@@ -6,7 +6,7 @@
 /*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 00:30:49 by marvin            #+#    #+#             */
-/*   Updated: 2025/07/24 18:36:39 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/07/24 19:34:13 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,5 @@ t_cdlist	*pop_cdlstnode(t_cdlist	*node);
 int	push_to_a_stack(t_psstacks **stacks);
 int	push_to_b_stack(t_psstacks **stacks);
 
-t_psstacks	*create_stacks(void);
+t_psstacks	*init_stacks(int argc, char **argv);
 #endif
