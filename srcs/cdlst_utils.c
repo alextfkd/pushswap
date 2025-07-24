@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 22:10:37 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/07/22 16:10:38 by marvin           ###   ########.fr       */
+/*   Updated: 2025/07/22 16:45:24 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	print_cdlst(t_cdlist *lst, int stack)
 	nil = cdlst_find_nil(lst);
 	if (stack == STACK_A)
 	{
+		ft_printf("A ");
 		ptr = nil->prev;
 		while (ptr->content != NULL)
 		{
@@ -37,12 +38,14 @@ void	print_cdlst(t_cdlist *lst, int stack)
 			ft_printf("%d ", ptr->content->value);
 			ptr = ptr->next;
 		}
+		ft_printf("B");
 	}
 }
 
 void	print_stacks(t_cdlist *stack_a, t_cdlist *stack_b)
 {
 	print_cdlst(stack_a, STACK_A);
-	ft_printf(" | ");
+	ft_printf("| ");
 	print_cdlst(stack_b, STACK_B);
+	ft_printf("\n");
 }

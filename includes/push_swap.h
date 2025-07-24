@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 00:30:49 by marvin            #+#    #+#             */
-/*   Updated: 2025/07/22 15:51:48 by marvin           ###   ########.fr       */
+/*   Updated: 2025/07/22 16:38:17 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,14 @@ int	insert_nil_prev(t_cdlist **lst, t_cdlist *new_prev);
 int	rotate_forward(t_cdlist **lst);
 int	rotate_backward(t_cdlist **lst);
 int	swap_forward(t_cdlist **lst);
+int	swap_backward(t_cdlist **lst);
 
 void	print_cdlst(t_cdlist *lst, int stack);
+void	print_stacks(t_cdlist *stack_a, t_cdlist *stack_b);
 
 void	del_cdlstnode(t_cdlist *node);
 t_cdlist	*pop_cdlstnode(t_cdlist	*node);
+int	push_to_a_stack(t_cdlist *stack_a, t_cdlist *stack_b);
+int	push_to_b_stack(t_cdlist *stack_a, t_cdlist *stack_b);
 
 #endif

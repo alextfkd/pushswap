@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 22:22:19 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/07/22 16:23:18 by marvin           ###   ########.fr       */
+/*   Updated: 2025/07/22 16:48:35 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,38 +48,6 @@ int	insert_nil_prev(t_cdlist **lst, t_cdlist *new_prev)
 	new_prev->prev = old_prev;
 	new_prev->next = nil;
 	return (0);
-}
-
-// Before: -> NODE_1 -> nil -> NODE_2 ->
-// After: -> nil -> NODE_1 -> NODE_2 ->
-int	rotate_forward(t_cdlist **lst)
-{
-	t_cdlist	*nil;
-	t_cdlist	*new_next;
-
-	nil = cdlst_find_nil(*lst);
-	if (nil == NULL)
-		return (1);
-	new_next = pop_cdlstnode(nil->prev);
-	if (new_next == NULL)
-		return (1);
-	return (insert_nil_next(lst, new_next));
-}
-
-// Before: -> NODE_1 -> nil -> NODE_2 ->
-// After: -> NODE_1 -> NODE_2 -> nil ->
-int	rotate_backward(t_cdlist **lst)
-{
-	t_cdlist	*nil;
-	t_cdlist	*new_prev;
-
-	nil = cdlst_find_nil(*lst);
-	if (nil == NULL)
-		return (1);
-	new_prev = pop_cdlstnode(nil->next);
-	if (new_prev == NULL)
-		return (1);
-	return (insert_nil_next(lst, new_prev));
 }
 
 // Before: -> nil -> NODE_1 -> NODE_2 -> NODE_3 ->
