@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stacks_create.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 18:23:00 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/07/24 20:16:11 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/07/25 05:17:44 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static t_psstacks	*_create_stacks(void)
 		return (NULL);
 	stacks->stack_a = ft_cdlstinit();
 	stacks->stack_b = ft_cdlstinit();
+	stacks->a_ops = NULL;
+	stacks->b_ops = NULL;
 	stacks->op_count = 0;
 	stacks->status = 0;
 	return (stacks);
@@ -56,7 +58,7 @@ static int	_load_args_to_stack_a(int *arr, int len, t_psstacks **stacks)
 	status = 0;
 	while (i < len)
 	{
-		ft_printf("arr[%d] = %d\n", i, arr[i]);
+		//ft_printf("arr[%d] = %d\n", i, arr[i]);
 		node = create_cdlst_node(arr[i]);
 		status = insert_nil_prev(&((*stacks)->stack_a), node);
 		if (status > 0)

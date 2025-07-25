@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 00:30:49 by marvin            #+#    #+#             */
-/*   Updated: 2025/07/24 21:03:10 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/07/25 06:26:42 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,18 @@
 # define MSG_EIO "Invalid input."
 # define MSG_EOVERFLOW "Numerical overflow in arguments."
 
+# define ORDER_123 123
+# define ORDER_132 132
+# define ORDER_213 213
+# define ORDER_231 231
+# define ORDER_312 312
+# define ORDER_321 321
+
+#define SORT_ASC 1
+#define SORT_NO 0
+#define SORT_DESC -1
+
+
 typedef	struct	s_psdata
 {
 	int	value;
@@ -52,6 +64,8 @@ typedef struct s_psstacks
 {
 	t_cdlist	*stack_a;
 	t_cdlist	*stack_b;
+	char		*a_ops;
+	char		*b_ops;
 	int			op_count;
 	int			status;
 }	t_psstacks;
@@ -99,4 +113,8 @@ int	w_rrr(t_psstacks **stacks);
 int		if_stack_a_sorted(t_psstacks *stacks);
 int		if_stack_b_sorted(t_psstacks *stacks);
 int	if_stacks_sorted(t_psstacks *stacks);
+
+int	stack_top3_status(t_cdlist *stack);
+int	do_ops(t_psstacks **stacks);
+int	sort_top3_stacks(t_psstacks **stacks, int a_dir, int b_dir);
 #endif

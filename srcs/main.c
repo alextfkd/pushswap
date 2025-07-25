@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 00:19:33 by marvin            #+#    #+#             */
-/*   Updated: 2025/07/24 22:29:01 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/07/25 09:50:11 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,78 +47,93 @@ int	test_cdlst_1(void)
 	return (0);
 }
 
-int	stack_a_top3_status(t_psstacks ** stacks)
+int	cdlist_count_sorted(t_cdlist *head)
 {
-	t_cdlist	*top;
-	int			topv;
-	int			topnv;
-	int			topnnv;
+	t_cdlist 	*ptr;
+	int			count;
 
-	top = cdlst_find_head((*stacks)->stack_a);
-	topv = top->content->value;
-	topnv = top->next->content->value;
-	topnnv = top->next->next->content->value;
-	ft_printf("topv = %s\n" ,ft_itoa(topv));
-	ft_printf("topnv = %s\n" ,ft_itoa(topnv));
-	ft_printf("topnnv = %s\n" ,ft_itoa(topnnv));
-	if (topv < topnv && topnv < topnnv)
-		return (321);
-	else if (topv < topnnv && topnnv < topnv)
-		return (231);
-	else if (topnv < topv && topv < topnnv)
-		return (312);
-	else if (topnv < topnnv && topnnv < topv)
-		return (132);
-	else if (topnnv < topv && topv < topnv)
-		return (213);
-	else if (topnnv < topnv && topnv < topv)
-		return (123);
-	return(0);
+	ptr = head;
+	count = 1;
+	if (ptr->content->value < ptr->next->content->value)
+	{
+		while (ptr->content->value < ptr->next->content->value)
+		{
+			count++;
+			ptr = ptr->next;
+			if (ptr->next->content == NULL)
+				break;
+		}
+		return (count);
+	}
+	while (ptr->content->value > ptr->next->content->value)
+	{
+		count++;
+		ptr = ptr->next;
+		if (ptr->next->content == NULL)
+			break;
+	}
+	return (count);
 }
 
-int	sort_stack_a_top3(t_psstacks ** stacks)
+int	rotate_merge(t_psstacks **stacks, int sorted_count)
 {
-	int top3_status;
+	t_cdlist	*a_head;
+	t_cdlist	*b_head;
+	int			r_count;
 
-	top3_status = stack_a_top3_status(stacks);
-	ft_printf("status = %s\n" ,ft_itoa(top3_status));
-	if (top3_status == 123)
+	a_head = cdlst_find_head((*stacks)->stack_a);
+	b_head = cdlst_find_head((*stacks)->stack_b);
+	r_count = 0;
+	while (b_head->content != NULL && sorted_count > 0)
 	{
-		ft_printf("123\n");
-		w_sa(stacks);
-		w_ra(stacks);
-		w_sa(stacks);
-		w_rra(stacks);
-		w_sa(stacks);
-	}
-	else if (top3_status == 132)
+		if (a_head->content->value < b_head->content->value)
+		{
+			w_ra(stacks);
+			r_count++;
+		}
+		else
+		{
+			w_pa(stacks);
+			sorted_count--;
+		}
+		a_head = cdlst_find_head((*stacks)->stack_a);
+		b_head = cdlst_find_head((*stacks)->stack_b);
+	} 
+	return (r_count);
+}
+
+int	reverse_rotate_merge(t_psstacks **stacks, int r_count)
+{
+	t_cdlist	*a_head;
+	t_cdlist	*b_head;
+
+	a_head = cdlst_find_head((*stacks)->stack_a);
+	b_head = cdlst_find_head((*stacks)->stack_b);
+	while (r_count > 0)
 	{
-		ft_printf("132\n");
-		w_sa(stacks);
-		w_ra(stacks);
-		w_sa(stacks);
-		w_rra(stacks);
+		if (b_head->content != NULL && a_head->prev->prev->content->value < b_head->content->value)
+			w_pa(stacks);
+		else
+		{
+			w_rra(stacks);
+			r_count--;
+		}
+		a_head = cdlst_find_head((*stacks)->stack_a);
+		b_head = cdlst_find_head((*stacks)->stack_b);
 	}
-	else if (top3_status == 321)
-	{
-	}
-	else if (top3_status == 231)
-	{
-		w_ra(stacks);
-		w_sa(stacks);
-		w_rra(stacks);
-	}
-	else if (top3_status == 213)
-	{
-		w_ra(stacks);
-		w_sa(stacks);
-		w_rra(stacks);
-		w_sa(stacks);
-	}
-	else if (top3_status == 213)
-	{
-		w_sa(stacks);
-	}
+	return (0);
+}
+
+int	b2a_descend_merge(t_psstacks **stacks)
+{
+	t_cdlist	*b_head;
+	int			r_count;
+	int			b_sorted_count;
+
+	b_head = cdlst_find_head((*stacks)->stack_b);
+	b_sorted_count = cdlist_count_sorted(b_head);
+	r_count = rotate_merge(stacks, b_sorted_count);
+	reverse_rotate_merge(stacks, r_count);
 	return (0);
 }
 
@@ -139,8 +154,18 @@ int	main(int argc, char **argv)
 	ft_printf("\n");
 	stacks = init_stacks(argc, argv);
 	print_stacks(stacks);
-	sort_stack_a_top3(&stacks);
+	//w_pb(&stacks);
+	w_pb(&stacks);
+	w_pb(&stacks);
+	w_pb(&stacks);
+	sort_top3_stacks(&stacks, -1, -1);
+	//sort_stack_a_top3_desc(&stacks);
+	//sort_stack_a_top3_asc(&stacks);
+	do_ops(&stacks);
 	print_stacks(stacks);
+	b2a_descend_merge(&stacks);
+	print_stacks(stacks);
+	ft_printf("total ops: %d", stacks->op_count);
 	/*
 	w_sa(&stacks);
 	if (stacks->status == 1)

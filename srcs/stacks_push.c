@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stacks_push.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:47:07 by marvin            #+#    #+#             */
-/*   Updated: 2025/07/24 20:12:41 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/07/25 07:25:01 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	_push_to_a_stack(t_cdlist *stack_a, t_cdlist *stack_b)
 {
 	t_cdlist	*node;
 
-	node = cdlst_find_tail(stack_b);
+	node = cdlst_find_head(stack_b);
 	node = pop_cdlstnode(node);
 	if (node == NULL)
 		return (1);
