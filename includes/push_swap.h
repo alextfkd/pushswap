@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 00:30:49 by marvin            #+#    #+#             */
-/*   Updated: 2025/07/25 06:26:42 by marvin           ###   ########.fr       */
+/*   Updated: 2025/07/25 22:46:14 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,11 @@
 #define SORT_NO 0
 #define SORT_DESC -1
 
+#define ORDER_ASC 1
+#define ORDER_DESC -1
+
+#define PUSH_A2B 1
+#define PUSH_B2A -1
 
 typedef	struct	s_psdata
 {
@@ -117,4 +122,20 @@ int	if_stacks_sorted(t_psstacks *stacks);
 int	stack_top3_status(t_cdlist *stack);
 int	do_ops(t_psstacks **stacks);
 int	sort_top3_stacks(t_psstacks **stacks, int a_dir, int b_dir);
+
+int	rotate_merge(
+	t_psstacks **stacks,
+	int sorted_count,
+	int order,
+	int push_toward
+);
+
+int	rev_rotate_merge(
+	t_psstacks **stacks,
+	int r_count,
+	int order,
+	int push_toward
+);
+int	cdlist_count_sorted(t_cdlist *head);
+
 #endif

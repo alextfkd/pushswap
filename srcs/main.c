@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 00:19:33 by marvin            #+#    #+#             */
-/*   Updated: 2025/07/25 09:50:11 by marvin           ###   ########.fr       */
+/*   Updated: 2025/07/25 23:06:03 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,65 +75,30 @@ int	cdlist_count_sorted(t_cdlist *head)
 	return (count);
 }
 
-int	rotate_merge(t_psstacks **stacks, int sorted_count)
+int	merge_sorted_substacks(t_psstacks **stacks, int order, int push_toward)
 {
-	t_cdlist	*a_head;
-	t_cdlist	*b_head;
+	t_cdlist	*head;
 	int			r_count;
+	int			sorted_count;
 
-	a_head = cdlst_find_head((*stacks)->stack_a);
-	b_head = cdlst_find_head((*stacks)->stack_b);
-	r_count = 0;
-	while (b_head->content != NULL && sorted_count > 0)
-	{
-		if (a_head->content->value < b_head->content->value)
-		{
-			w_ra(stacks);
-			r_count++;
-		}
-		else
-		{
-			w_pa(stacks);
-			sorted_count--;
-		}
-		a_head = cdlst_find_head((*stacks)->stack_a);
-		b_head = cdlst_find_head((*stacks)->stack_b);
-	} 
-	return (r_count);
-}
-
-int	reverse_rotate_merge(t_psstacks **stacks, int r_count)
-{
-	t_cdlist	*a_head;
-	t_cdlist	*b_head;
-
-	a_head = cdlst_find_head((*stacks)->stack_a);
-	b_head = cdlst_find_head((*stacks)->stack_b);
-	while (r_count > 0)
-	{
-		if (b_head->content != NULL && a_head->prev->prev->content->value < b_head->content->value)
-			w_pa(stacks);
-		else
-		{
-			w_rra(stacks);
-			r_count--;
-		}
-		a_head = cdlst_find_head((*stacks)->stack_a);
-		b_head = cdlst_find_head((*stacks)->stack_b);
-	}
-	return (0);
-}
-
-int	b2a_descend_merge(t_psstacks **stacks)
-{
-	t_cdlist	*b_head;
-	int			r_count;
-	int			b_sorted_count;
-
-	b_head = cdlst_find_head((*stacks)->stack_b);
-	b_sorted_count = cdlist_count_sorted(b_head);
-	r_count = rotate_merge(stacks, b_sorted_count);
-	reverse_rotate_merge(stacks, r_count);
+	if (push_toward == PUSH_B2A)
+		head = cdlst_find_head((*stacks)->stack_b);
+	else if (push_toward == PUSH_A2B)
+		head = cdlst_find_head((*stacks)->stack_a);
+	else
+		return (1);
+	sorted_count = cdlist_count_sorted(head);
+	ft_printf("sorted_count: [%d]\n", sorted_count);
+	print_stacks(*stacks);
+	//w_sb(stacks);
+	print_stacks(*stacks);
+	//w_rb(stacks);
+	print_stacks(*stacks);
+	r_count = rotate_merge(stacks, sorted_count, order, push_toward);
+	print_stacks(*stacks);
+	ft_printf("AAA\n");
+	rev_rotate_merge(stacks, r_count, order, push_toward);
+	print_stacks(*stacks);
 	return (0);
 }
 
@@ -158,13 +123,38 @@ int	main(int argc, char **argv)
 	w_pb(&stacks);
 	w_pb(&stacks);
 	w_pb(&stacks);
-	sort_top3_stacks(&stacks, -1, -1);
-	//sort_stack_a_top3_desc(&stacks);
-	//sort_stack_a_top3_asc(&stacks);
+	sort_top3_stacks(&stacks, 1, 1);
 	do_ops(&stacks);
 	print_stacks(stacks);
-	b2a_descend_merge(&stacks);
+	merge_sorted_substacks(&stacks, ORDER_DESC, PUSH_A2B);
 	print_stacks(stacks);
+	return (1);
+	w_pb(&stacks);
+	w_pb(&stacks);
+	w_pb(&stacks);
+	print_stacks(stacks);
+	sort_top3_stacks(&stacks, -1, -1);
+	do_ops(&stacks);
+	print_stacks(stacks);
+	merge_sorted_substacks(&stacks, ORDER_ASC, PUSH_A2B);
+	//merge_sorted_substacks(&stacks, ORDER_ASC, PUSH_A2B);
+	//print_stacks(stacks);
+	/*
+	merge_sorted_substacks(&stacks, ORDER_DESC, PUSH_B2A);
+	print_stacks(stacks);
+	*/
+	/*
+	print_stacks(stacks);
+	w_pa(&stacks);
+	w_pa(&stacks);
+	w_pa(&stacks);
+	w_pa(&stacks);
+	w_pa(&stacks);
+	w_pa(&stacks);
+	merge_sorted_substacks(&stacks, ORDER_DESC, PUSH_B2A);
+	print_stacks(stacks);
+	*/
+	//b2a_descend_merge(&stacks);
 	ft_printf("total ops: %d", stacks->op_count);
 	/*
 	w_sa(&stacks);

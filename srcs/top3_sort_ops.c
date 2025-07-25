@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   top3_sort_ops.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 06:00:03 by marvin            #+#    #+#             */
-/*   Updated: 2025/07/25 06:27:24 by marvin           ###   ########.fr       */
+/*   Updated: 2025/07/25 21:26:37 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,11 @@ static char	*_asc_top3_sort_ops(int top3_status)
 
 int	sort_top3_stacks(t_psstacks **stacks, int a_dir, int b_dir)
 {
-	int 	top3_status_a;
-	int 	top3_status_b;
+	int		top3_status_a;
+	int		top3_status_b;
 	char	*a_ops;
 	char	*b_ops;
-	
+
 	top3_status_a = stack_top3_status((*stacks)->stack_a);
 	top3_status_b = stack_top3_status((*stacks)->stack_b);
 	if (a_dir == SORT_ASC)
@@ -82,9 +82,9 @@ int	sort_top3_stacks(t_psstacks **stacks, int a_dir, int b_dir)
 	return (0);
 }
 
-int	sort_stack_a_top3_desc(t_psstacks ** stacks)
+int	sort_stack_a_top3_desc(t_psstacks **stacks)
 {
-	int 	top3_status;
+	int		top3_status;
 	char	*ops;
 
 	top3_status = stack_top3_status((*stacks)->stack_a);
@@ -93,9 +93,9 @@ int	sort_stack_a_top3_desc(t_psstacks ** stacks)
 	return (0);
 }
 
-int	sort_stack_a_top3_asc(t_psstacks ** stacks)
+int	sort_stack_a_top3_asc(t_psstacks **stacks)
 {
-	int 	top3_status;
+	int		top3_status;
 	char	*ops;
 
 	top3_status = stack_top3_status((*stacks)->stack_a);
