@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 00:19:33 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/01 15:41:17 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/04 21:50:41 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -633,16 +633,54 @@ int	*create_sort_orders(int len)
 	return (arr);
 }
 
+int	get_m_or_v(t_psstacks *stacks)
+{
+	t_cdlist	*a;
+	t_cdlist	*b;
+	int			M;
+	int			V;
+
+	M = ORDER_DESC;
+	V = ORDER_ASC;
+	a = cdlst_find_head(stacks->stack_a);
+	b = cdlst_find_head(stacks->stack_b);
+	if (a->content == NULL || a->next->content == NULL)
+	{
+		if (b->content->value > b->next->content->value)
+			return (M);
+		return (V);
+	}
+	if (b->content == NULL || b->next->content == NULL)
+	{
+		if (a->content->value > a->next->content->value)
+			return (M);
+		return (V);
+	}
+	if (b->content->value > b->next->content->value)
+	{
+		if (a->content->value > a->next->content->value)
+			return (M);
+	}
+	if (b->content->value < b->next->content->value)
+	{
+		if (a->content->value < a->next->content->value)
+			return (V);
+	}
+	return (0);
+}
+
 int	merge_test3(int *arr)
 {
-	int	arr01[12] = {12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+	//int	arr01[12] = {12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+	int	arr02[24] = {24, 23, 22, 21, 20, 19, 18, 17, 16 ,15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
 	t_psstacks	*test_stack01;
-	test_stack01 = init_stacks_from_array(arr01, 12);
+	//test_stack01 = init_stacks_from_array(arr01, 12);
+	test_stack01 = init_stacks_from_array(arr02, 24);
 	ft_printf("INITIAL\n");
 	print_stacks(test_stack01);
 	ft_printf("\n");
 	int i = 0;
-	int arrlen = 4;
+	int arrlen = 24 / 8;
 	while (i < arrlen)
 	{
 		ft_printf("%d", arr[i++]);
@@ -651,9 +689,8 @@ int	merge_test3(int *arr)
 	i = 0;
 	while (i < arrlen)
 	{
-		w_pb(&test_stack01);
-		w_pb(&test_stack01);
-		w_pb(&test_stack01);
+		ft_printf("NEW LOOP\n\n");
+		w_pbn(&test_stack01, 3);
 		print_stacks(test_stack01);
 		//if (arr[i] == 1 && arr[i + 1] == 0)
 		if (arr[i] == 1)
@@ -664,20 +701,39 @@ int	merge_test3(int *arr)
 		else
 			return (1);
 		do_ops(&test_stack01);
-		w_pb(&test_stack01);
-		w_pb(&test_stack01);
-		w_pb(&test_stack01);
+		w_pbn(&test_stack01, 3);
 		print_stacks(test_stack01);
+		ft_printf("672 line\n\n");
 		//w_pbn(&test_stack01, cdlist_count_sorted((test_stack01)->stack_a));
 		if (test_stack01->stack_a->next->content == NULL)
 		{
+			ft_printf("MERGE 1 !!\n\n");
 			w_pan(&test_stack01, cdlist_count_sorted((test_stack01)->stack_b));
 			print_stacks(test_stack01);
-			merge_sorted_substacks(&test_stack01, ORDER_ASC, PUSH_B2A);
+			merge_sorted_substacks(&test_stack01, get_m_or_v(test_stack01), PUSH_B2A);
 			print_stacks(test_stack01);
 			w_pan(&test_stack01, cdlist_count_sorted((test_stack01)->stack_b));
 			print_stacks(test_stack01);
-			merge_sorted_substacks(&test_stack01, ORDER_ASC, PUSH_B2A);
+			merge_sorted_substacks(&test_stack01, get_m_or_v(test_stack01), PUSH_B2A);
+			w_pan(&test_stack01, cdlist_count_sorted((test_stack01)->stack_b));
+			print_stacks(test_stack01);
+			merge_sorted_substacks(&test_stack01, get_m_or_v(test_stack01), PUSH_B2A);
+			w_pan(&test_stack01, cdlist_count_sorted((test_stack01)->stack_b));
+			print_stacks(test_stack01);
+			merge_sorted_substacks(&test_stack01, get_m_or_v(test_stack01), PUSH_B2A);
+			print_stacks(test_stack01);
+
+			ft_printf("MERGE 2 !!\n\n");
+			w_pbn(&test_stack01, cdlist_count_sorted((test_stack01)->stack_a));
+			print_stacks(test_stack01);
+			merge_sorted_substacks(&test_stack01, get_m_or_v(test_stack01), PUSH_A2B);
+			print_stacks(test_stack01);
+			w_pbn(&test_stack01, cdlist_count_sorted((test_stack01)->stack_a));
+			print_stacks(test_stack01);
+			w_pbn(&test_stack01, cdlist_count_sorted((test_stack01)->stack_a));
+			print_stacks(test_stack01);
+			ft_printf("!");
+			merge_sorted_substacks(&test_stack01, get_m_or_v(test_stack01), PUSH_B2A);
 			print_stacks(test_stack01);
 			break;
 
@@ -696,7 +752,7 @@ int	main(int argc, char **argv)
 	//main_2();
 	//merge_test();
 	merge_test2();
-	int *arr = create_sort_orders(4);
+	int *arr = create_sort_orders(8);
 	merge_test3(arr);
 
 	//stacks = init_stacks(argc, argv);

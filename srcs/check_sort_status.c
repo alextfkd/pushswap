@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_sort_status.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 06:01:28 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/02 15:16:51 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/04 20:24:38 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ static int _stack_top1_2_status(t_cdlist *stack)
 	if (top->next->content == NULL)
 		return (ORDER_1);
 	topnv = top->next->content->value;
-	if (top->next->next->content == NULL && top > topnv)
+	if (top->next->next->content == NULL && topv > topnv)
 		return (ORDER_12);
-	if (top->next->next->content == NULL && top < topnv)
+	if (top->next->next->content == NULL && topv < topnv)
 		return (ORDER_21);
 	return (0);
 }
