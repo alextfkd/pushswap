@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cdlst_create.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 21:23:23 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/07/22 21:44:56 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/07/29 06:19:36 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,34 @@ t_cdlist	*create_cdlst_node(const int value)
 		return (NULL);
 	}
 	return (node);
+}
+
+t_cdlist	*create_stack_from_arr(int *arr, int len)
+{
+	t_cdlist 	*stack;
+	t_cdlist 	*node;
+	int			status;
+	int			i;
+
+	if (arr == NULL)
+		return (NULL);
+	stack = ft_cdlstinit();
+	status = 0;
+	i = 0;
+	while (i < len)
+	{
+		node = create_cdlst_node(arr[i++]);
+		if (node == NULL)
+		{
+			free_cdlst_node(stack);
+			return (NULL);
+		}
+		status += insert_nil_prev(&stack,node);
+		if (status > 0)
+		{
+			free_cdlst_node(stack);
+			return (NULL);
+		}
+	}
+	return (stack);
 }

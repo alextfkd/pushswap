@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 18:23:00 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/07/25 05:17:44 by marvin           ###   ########.fr       */
+/*   Updated: 2025/07/29 08:58:57 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static t_psstacks	*_create_stacks(void)
 	stacks->b_ops = NULL;
 	stacks->op_count = 0;
 	stacks->status = 0;
+	stacks->a_sort_len = 0;
+	stacks->b_sort_len = 0;
 	return (stacks);
 }
 

@@ -10,7 +10,7 @@ FT_PRINTF = ./ft_printf/libftprintf.a
 
 SRCS = main.c validation.c error.c
 SRCS += cdlst_create.c cdlst_delete.c cdlst_findnode.c cdlst_insert.c cdlst_utils.c cdlst_rotate.c
-SRCS += stacks_create.c stacks_push.c stacks_utils.c 
+SRCS += stacks_create.c stacks_push.c stacks_utils.c stacks_cmp.c
 SRCS += wrap_p.c wrap_s.c wrap_r.c wrap_rr.c
 SRCS += sort_ops.c top3_sort_ops.c check_sort_status.c rotate_merge.c rev_rotate_merge.c
 #SRCS = $(addprefix  $(SRCDIR)/, $(SRCS))

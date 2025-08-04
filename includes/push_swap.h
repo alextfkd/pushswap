@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 00:30:49 by marvin            #+#    #+#             */
-/*   Updated: 2025/07/25 22:46:14 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/07/30 02:03:07 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ typedef struct s_psstacks
 	char		*b_ops;
 	int			op_count;
 	int			status;
+	int			a_sort_len;
+	int			b_sort_len;
 }	t_psstacks;
 
 int	validate_args(int argc, char **argv);
@@ -125,7 +127,6 @@ int	sort_top3_stacks(t_psstacks **stacks, int a_dir, int b_dir);
 
 int	rotate_merge(
 	t_psstacks **stacks,
-	int sorted_count,
 	int order,
 	int push_toward
 );
@@ -138,4 +139,10 @@ int	rev_rotate_merge(
 );
 int	cdlist_count_sorted(t_cdlist *head);
 
+t_cdlist	*create_stack_from_arr(int *arr, int len);
+void	free_cdlst_node(t_cdlist *lst);
+int		cmp_cdlst(t_cdlist	*stack_1, t_cdlist *stack_2);
+int	cmp_stacks(t_psstacks *stacks_1, t_psstacks *stacks_2);
+int	w_pan(t_psstacks **stacks, int n);
+int	w_pbn(t_psstacks **stacks, int n);
 #endif

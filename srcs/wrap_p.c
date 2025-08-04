@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wrap_p.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 20:21:38 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/07/24 20:27:29 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/08/04 11:02:53 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	w_pa(t_psstacks **stacks)
 	int	res;
 
 	res = push_to_a_stack(stacks);
-	if (res == 0)
+	if (res == 1)
 		(*stacks)->op_count++;
 	return (res);
 }
@@ -27,7 +27,33 @@ int	w_pb(t_psstacks **stacks)
 	int	res;
 
 	res = push_to_b_stack(stacks);
-	if (res == 0)
+	if (res == 1)
 		(*stacks)->op_count++;
+	return (res);
+}
+
+int	w_pan(t_psstacks **stacks, int n)
+{
+	int	res;
+
+	res = 0;
+	while (n > 0)
+	{
+		res += w_pa(stacks);
+		n--;
+	}
+	return (res);
+}
+
+int	w_pbn(t_psstacks **stacks, int n)
+{
+	int	res;
+
+	res = 0;
+	while (n > 0)
+	{
+		res += w_pb(stacks);
+		n--;
+	}
 	return (res);
 }
