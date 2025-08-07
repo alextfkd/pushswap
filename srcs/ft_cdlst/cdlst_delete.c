@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cdlst_delete.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 22:32:33 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/07/22 16:48:46 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/07 08:45:30 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	del_cdlstnode(t_cdlist *node)
+static void	del_cdlstnode(t_cdlist *node)
 {
 	if (node == NULL)
 		return ;
@@ -40,4 +40,19 @@ t_cdlist	*pop_cdlstnode(t_cdlist	*node)
 	node->next = NULL;
 	node->prev = NULL;
 	return (node);
+}
+
+// Delete and free entire circulated list.
+void	delete_cdlst(t_cdlist *lst)
+{
+	t_cdlist	*tmp;
+
+	if (lst == NULL || lst->next == NULL)
+		return ;
+	while (lst->next != lst)
+	{
+		tmp = pop_cdlstnode(lst);
+		del_cdlstnode(tmp);
+	}
+	del_cdlstnode(lst);
 }

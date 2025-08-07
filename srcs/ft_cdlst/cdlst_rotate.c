@@ -6,7 +6,7 @@
 /*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:47:07 by marvin            #+#    #+#             */
-/*   Updated: 2025/07/24 21:37:07 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/08/07 08:34:01 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // Before: -> NODE_1 -> nil -> NODE_2 ->
 // After: -> nil -> NODE_1 -> NODE_2 ->
-int	rotate_forward(t_cdlist **lst)
+int	rotate_backward(t_cdlist **lst)
 {
 	t_cdlist	*nil;
 	t_cdlist	*new_next;
@@ -30,7 +30,7 @@ int	rotate_forward(t_cdlist **lst)
 
 // Before: -> NODE_1 -> nil -> NODE_2 ->
 // After: -> NODE_1 -> NODE_2 -> nil ->
-int	rotate_backward(t_cdlist **lst)
+int	rotate_forward(t_cdlist **lst)
 {
 	t_cdlist	*nil;
 	t_cdlist	*new_prev;

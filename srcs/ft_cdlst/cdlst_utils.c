@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cdlst_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 22:10:37 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/07/29 06:26:02 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/07 09:02:59 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,23 @@ int		cmp_cdlst(t_cdlist	*stack_1, t_cdlist *stack_2)
 	if (s1 == n1 && s2 == n2)
 		return (1);
 	return (0);
+}
+
+int	cdlst_len(t_cdlist *lst)
+{
+	int			len;
+	t_cdlist	*nil;
+	t_cdlist	*node;
+
+	len = 0;
+	if (lst == NULL)
+		return (-1);
+	nil = cdlst_find_nil(lst);
+	node = nil->next;
+	while (node != nil)
+	{
+		node = node->next;
+		len++;
+	}
+	return (len);
 }

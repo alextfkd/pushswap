@@ -6,35 +6,13 @@
 /*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 06:01:28 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/04 20:24:38 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/08/07 11:56:04 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	_if_node_null(t_cdlist *top)
-{
-	if (top == NULL || top->next == NULL || top->next->next == NULL)
-		return (1);
-	return (0);
-}
-
-static int	_if_node_nil(t_cdlist *top)
-{
-	if (top->content == NULL)
-		return (1);
-	if (top->next->content == NULL)
-		return (1);
-	if (top->next->next->content == NULL)
-		return (1);
-	return (0);
-}
-
-#define ORDER_1 1
-#define ORDER_12 12
-#define ORDER_21 21
-
-static int _stack_top1_2_status(t_cdlist *stack)
+static int _stack_top_2_status(t_cdlist *stack)
 {
 	t_cdlist	*top;
 	int			topv;
@@ -42,20 +20,16 @@ static int _stack_top1_2_status(t_cdlist *stack)
 
 	top = cdlst_find_head(stack);
 	topv = top->content->value;
-	if (top->next->content == NULL)
-		return (ORDER_1);
 	topnv = top->next->content->value;
 	if (top->next->next->content == NULL && topv > topnv)
 		return (ORDER_12);
-	if (top->next->next->content == NULL && topv < topnv)
+	else if (top->next->next->content == NULL && topv < topnv)
 		return (ORDER_21);
-	return (0);
+	else
+		return (-1);
 }
 
-// Returns 3 digit num.
-// top-value rank / next-value rank / next-next-value rank
-// Ex: nil->10->3->4 => "312"
-int	stack_top3_status(t_cdlist *stack)
+static int _stack_top_3_status(t_cdlist *stack)
 {
 	t_cdlist	*top;
 	int			topv;
@@ -63,14 +37,8 @@ int	stack_top3_status(t_cdlist *stack)
 	int			topnnv;
 
 	top = cdlst_find_head(stack);
-	if (_if_node_null(top) == 1 || _if_node_nil(top) == 1)
-		return (1);
 	topv = top->content->value;
-	if (top->next->content == NULL)
-		return (ORDER_1);
 	topnv = top->next->content->value;
-	if (top->next->next->content == NULL)
-		return (_stack_top1_2_status(stack));
 	topnnv = top->next->next->content->value;
 	if (topv < topnv && topnv < topnnv)
 		return (ORDER_123);
@@ -84,5 +52,27 @@ int	stack_top3_status(t_cdlist *stack)
 		return (ORDER_231);
 	else if (topnnv < topnv && topnv < topv)
 		return (ORDER_321);
-	return (0);
+	else
+		return (-1);
+}
+
+
+// Returns 3 digit num.
+// top-value rank / next-value rank / next-next-value rank
+// Ex: nil->10->3->4 => "312"
+int	stack_top3_status(t_cdlist *stack)
+{
+	int			listlen;
+
+	listlen = cdlst_len(stack);
+	if (listlen == 0)
+		return (ORDER_0);
+	else if (listlen == 1)
+		return (ORDER_1);
+	else if (listlen == 2)
+		return (_stack_top_2_status(stack));
+	else if (listlen >= 3)
+		return (_stack_top_3_status(stack));
+	else
+		return (-1);
 }

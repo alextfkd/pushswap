@@ -6,46 +6,12 @@
 /*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 00:19:33 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/04 21:50:41 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/08/07 12:26:24 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-int	cdlist_count_sorted(t_cdlist *lst)
-{
-	t_cdlist 	*nil;
-	t_cdlist 	*ptr;
-	int			count;
-
-	nil = cdlst_find_nil(lst);
-	ptr = nil->next;
-	if (ptr == nil)
-		return (0);
-	count = 1;
-	if (ptr->next->content == NULL)
-		return (count);
-	if (ptr->content->value < ptr->next->content->value)
-	{
-		while (ptr->content->value < ptr->next->content->value)
-		{
-			count++;
-			ptr = ptr->next;
-			if (ptr->next->content == NULL)
-				break;
-		}
-		return (count);
-	}
-	while (ptr->content->value > ptr->next->content->value)
-	{
-		count++;
-		ptr = ptr->next;
-		if (ptr->next->content == NULL)
-			break;
-	}
-	return (count);
-}
 
 int	merge_sorted_substacks(t_psstacks **stacks, int order, int push_toward)
 {
@@ -84,26 +50,6 @@ int	merge_sorted_substacks(t_psstacks **stacks, int order, int push_toward)
 	return (0);
 }
 
-t_psstacks	*create_stacks_from_cdlist(t_cdlist *stack_a, t_cdlist *stack_b)
-{
-	t_psstacks	*stacks;
-
-	if (stack_a == NULL || stack_b == NULL)
-		return (NULL);
-	stacks = (t_psstacks *)malloc(sizeof(t_psstacks));
-	if (stacks == NULL)
-		return (NULL);
-	stacks->stack_a = stack_a;
-	stacks->stack_b = stack_b;
-	stacks->a_ops = NULL;
-	stacks->b_ops = NULL;
-	stacks->op_count = 0;
-	stacks->a_sort_len = 0;
-	stacks->b_sort_len = 0;
-	return (stacks);
-}
-
-
 t_psstacks	*init_stacks_from_array(int *arr, int len)
 {
 	t_psstacks	*stacks;
@@ -131,22 +77,6 @@ t_psstacks	*init_stacks_from_array(int *arr, int len)
 	return (stacks);
 }
 
-void	free_stacks(t_psstacks **stacks)
-{
-	free_cdlst_node((*stacks)->stack_a);
-	free_cdlst_node((*stacks)->stack_b);
-	free(*stacks);
-}
-
-int	vsort_top3_stacks(t_psstacks **stack)
-{
-	return (sort_top3_stacks(stack, ORDER_ASC, ORDER_ASC));
-}
-
-int	msort_top3_stacks(t_psstacks **stack)
-{
-	return (sort_top3_stacks(stack, ORDER_DESC, ORDER_DESC));
-}
 
 static int	test_vsort_top3(t_psstacks *sorted, int *arr, int len)
 {

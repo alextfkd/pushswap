@@ -6,7 +6,7 @@
 /*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 06:00:03 by marvin            #+#    #+#             */
-/*   Updated: 2025/07/25 21:26:37 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/08/07 11:55:25 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static char	*_desc_top3_sort_ops(int top3_status)
 		ops = ft_strdup("srsRs");
 	else if (top3_status == ORDER_132)
 		ops = ft_strdup("srsR");
-	else if (top3_status == ORDER_321)
+	else if (top3_status == ORDER_321 )
 		ops = ft_strdup("");
 	else if (top3_status == ORDER_231)
 		ops = ft_strdup("s");
@@ -28,8 +28,16 @@ static char	*_desc_top3_sort_ops(int top3_status)
 		ops = ft_strdup("rsRs");
 	else if (top3_status == ORDER_312)
 		ops = ft_strdup("rsR");
-	else
+	else if (top3_status == ORDER_21)
 		ops = ft_strdup("");
+	else if (top3_status == ORDER_12)
+		ops = ft_strdup("s");
+	else if (top3_status == ORDER_1)
+		ops = ft_strdup("");
+	else if (top3_status == ORDER_0)
+		ops = ft_strdup("");
+	else
+		ops = NULL;
 	return (ops);
 }
 
@@ -49,8 +57,16 @@ static char	*_asc_top3_sort_ops(int top3_status)
 		ops = ft_strdup("s");
 	else if (top3_status == ORDER_312)
 		ops = ft_strdup("srsR");
-	else
+	else if (top3_status == ORDER_21)
+		ops = ft_strdup("s");
+	else if (top3_status == ORDER_12)
 		ops = ft_strdup("");
+	else if (top3_status == ORDER_1)
+		ops = ft_strdup("");
+	else if (top3_status == ORDER_0)
+		ops = ft_strdup("");
+	else
+		ops = NULL;
 	return (ops);
 }
 

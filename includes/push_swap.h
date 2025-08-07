@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 00:30:49 by marvin            #+#    #+#             */
-/*   Updated: 2025/07/30 02:03:07 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/07 12:26:07 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@
 # define MSG_EIO "Invalid input."
 # define MSG_EOVERFLOW "Numerical overflow in arguments."
 
+
+# define ORDER_0 0
+# define ORDER_1 1
+# define ORDER_12 12
+# define ORDER_21 21
 # define ORDER_123 123
 # define ORDER_132 132
 # define ORDER_213 213
@@ -98,8 +103,9 @@ int	swap_backward(t_cdlist **lst);
 void	print_cdlst(t_cdlist *lst, int stack);
 void	print_stacks(t_psstacks *stacks);
 
-void	del_cdlstnode(t_cdlist *node);
 t_cdlist	*pop_cdlstnode(t_cdlist	*node);
+void		delete_cdlst(t_cdlist *lst);
+
 int	push_to_a_stack(t_psstacks **stacks);
 int	push_to_b_stack(t_psstacks **stacks);
 
@@ -140,9 +146,17 @@ int	rev_rotate_merge(
 int	cdlist_count_sorted(t_cdlist *head);
 
 t_cdlist	*create_stack_from_arr(int *arr, int len);
+t_psstacks	*create_stacks_from_cdlist(t_cdlist *stack_a, t_cdlist *stack_b);
 void	free_cdlst_node(t_cdlist *lst);
 int		cmp_cdlst(t_cdlist	*stack_1, t_cdlist *stack_2);
+int	cdlst_len(t_cdlist *lst);
 int	cmp_stacks(t_psstacks *stacks_1, t_psstacks *stacks_2);
 int	w_pan(t_psstacks **stacks, int n);
 int	w_pbn(t_psstacks **stacks, int n);
+void	free_stacks(t_psstacks **stacks);
+int	vsort_top3_stacks(t_psstacks **stack);
+int	msort_top3_stacks(t_psstacks **stack);
+int	asort_top3_stacks(t_psstacks **stack);
+int	dsort_top3_stacks(t_psstacks **stack);
+int	cdlist_count_sorted(t_cdlist *lst);
 #endif

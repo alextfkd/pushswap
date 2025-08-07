@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stacks_create.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 18:23:00 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/07/29 08:58:57 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/07 12:28:19 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,25 @@ t_psstacks	*init_stacks(int argc, char **argv)
 		free(stacks);
 		return (NULL);
 	}
+	return (stacks);
+}
+
+
+t_psstacks	*create_stacks_from_cdlist(t_cdlist *stack_a, t_cdlist *stack_b)
+{
+	t_psstacks	*stacks;
+
+	if (stack_a == NULL || stack_b == NULL)
+		return (NULL);
+	stacks = (t_psstacks *)malloc(sizeof(t_psstacks));
+	if (stacks == NULL)
+		return (NULL);
+	stacks->stack_a = stack_a;
+	stacks->stack_b = stack_b;
+	stacks->a_ops = NULL;
+	stacks->b_ops = NULL;
+	stacks->op_count = 0;
+	stacks->a_sort_len = 0;
+	stacks->b_sort_len = 0;
 	return (stacks);
 }
