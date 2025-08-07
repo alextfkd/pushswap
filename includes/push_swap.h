@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 00:30:49 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/07 12:26:07 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/08/07 06:39:56 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void	print_cdlst(t_cdlist *lst, int stack);
 void	print_stacks(t_psstacks *stacks);
 
 t_cdlist	*pop_cdlstnode(t_cdlist	*node);
-void		delete_cdlst(t_cdlist *lst);
+void		delete_cdlst(t_cdlist **lst);
 
 int	push_to_a_stack(t_psstacks **stacks);
 int	push_to_b_stack(t_psstacks **stacks);
@@ -159,4 +159,11 @@ int	msort_top3_stacks(t_psstacks **stack);
 int	asort_top3_stacks(t_psstacks **stack);
 int	dsort_top3_stacks(t_psstacks **stack);
 int	cdlist_count_sorted(t_cdlist *lst);
+t_psstacks	*init_stacks_from_array(int *arr, int len);
+
+int	test_vsort_top3(t_psstacks *sorted, int *arr, int len, int print);
+int	test_msort_top3(t_psstacks *sorted, int *arr, int len, int print);
+int	test_asort_top3(t_psstacks *sorted, int *arr, int len, int print);
+int	test_dsort_top3(t_psstacks *sorted, int *arr, int len, int print);
+
 #endif

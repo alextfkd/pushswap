@@ -16,7 +16,7 @@ CDLST_OBJS = $(addprefix $(OBJDIR)/, $(CDLST:.c=.o))
 WRAP = wrap_p.c wrap_s.c wrap_r.c wrap_rr.c
 WRAP_OBJS = $(addprefix $(OBJDIR)/, $(WRAP:.c=.o))
 
-STACKOPS = stacks_create.c stacks_push.c stacks_utils.c stacks_cmp.c stacks_delete.c
+STACKOPS = stacks_create.c stacks_push.c stacks_utils.c stacks_cmp.c stacks_delete.c stacks_from_arr.c
 STACKOPS_OBJS = $(addprefix $(OBJDIR)/, $(STACKOPS:.c=.o))
 
 UTILS = error.c validation.c
@@ -24,6 +24,9 @@ UTILS_OBJS = $(addprefix $(OBJDIR)/, $(UTILS:.c=.o))
 
 SORT = check_sort_status.c top3_sort.c top3_sort_ops.c sort_ops.c count_sorted.c
 SORT_OBJS = $(addprefix $(OBJDIR)/, $(SORT:.c=.o))
+
+TEST = top3sort_test.c
+TEST_OBJS = $(addprefix $(OBJDIR)/, $(TEST:.c=.o))
 
 SRCS += rotate_merge.c rev_rotate_merge.c
 OBJS = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
@@ -33,15 +36,15 @@ IFLAGS = -Iincludes -Ift_printf/includes -Ilibft
 LFLAGS = -Lft_printf -Llibft
 LIBFLAGS = -lft -lftprintf
 
-VPATH = $(SRCDIR):$(SRCDIR)/ft_cdlst:$(SRCDIR)/ps_wrap:$(SRCDIR)/stacks:$(SRCDIR)/ps_utils:$(SRCDIR)/sort
+VPATH = $(SRCDIR):$(SRCDIR)/ft_cdlst:$(SRCDIR)/ps_wrap:$(SRCDIR)/stacks:$(SRCDIR)/ps_utils:$(SRCDIR)/sort:$(SRCDIR)/test
 
 all: $(OBJDIR) $(NAME)
 
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
 
-$(NAME): $(LIBFT) $(FT_PRINTF) $(OBJS) $(CDLST_OBJS) $(WRAP_OBJS) $(STACKOPS_OBJS) $(UTILS_OBJS) $(SORT_OBJS)
-	$(CC) $(CFLAGS) $(IFLAGS) $(OBJS)  $(CDLST_OBJS) $(WRAP_OBJS) $(STACKOPS_OBJS) $(UTILS_OBJS) $(SORT_OBJS) -o $@ $(LFLAGS) $(LIBFLAGS)
+$(NAME): $(LIBFT) $(FT_PRINTF) $(OBJS) $(CDLST_OBJS) $(WRAP_OBJS) $(STACKOPS_OBJS) $(UTILS_OBJS) $(SORT_OBJS) $(TEST_OBJS)
+	$(CC) $(CFLAGS) $(IFLAGS) $(OBJS)  $(CDLST_OBJS) $(WRAP_OBJS) $(STACKOPS_OBJS) $(UTILS_OBJS) $(SORT_OBJS) $(TEST_OBJS) -o $@ $(LFLAGS) $(LIBFLAGS)
 
 echo :
 	echo ${SRCS}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 00:19:33 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/07 12:26:24 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/08/07 05:17:30 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,86 +50,24 @@ int	merge_sorted_substacks(t_psstacks **stacks, int order, int push_toward)
 	return (0);
 }
 
-t_psstacks	*init_stacks_from_array(int *arr, int len)
-{
-	t_psstacks	*stacks;
-	t_cdlist	*stack_a;
-	t_cdlist	*stack_b;
-
-	if (arr == NULL || len <= 0)
-		return (NULL);
-	stack_a = create_stack_from_arr(arr, len);
-	if (stack_a == NULL)
-		return (NULL);
-	stack_b = ft_cdlstinit();
-	if (stack_b == NULL)
-	{
-		free_cdlst_node(stack_a);
-		return (NULL);
-	}
-	stacks = create_stacks_from_cdlist(stack_a, stack_b);
-	if (stacks == NULL)
-	{
-		free_cdlst_node(stack_a);
-		free_cdlst_node(stack_b);
-		return (NULL);
-	}
-	return (stacks);
-}
-
-
-static int	test_vsort_top3(t_psstacks *sorted, int *arr, int len)
-{
-	t_psstacks *stack;
-
-	stack = init_stacks_from_array(arr, len);
-	w_pb(&stack);
-	w_pb(&stack);
-	w_pb(&stack);
-	print_stacks(stack);
-	ft_printf("Current status -> [%d]\n", stack_top3_status(stack->stack_a));
-	vsort_top3_stacks(&stack);
-	do_ops(&stack);
-	print_stacks(stack);
-	if (cmp_stacks(sorted, stack) == 0)
-	{
-		free_stacks(&stack);
-		ft_printf("[FAILED]\n");
-		return (1);
-	}
-	ft_printf("[PASSED]\n");
-	return (0);
-}
-
-static int	test_msort_top3(t_psstacks *sorted, int *arr, int len)
-{
-	t_psstacks *stack;
-
-	stack = init_stacks_from_array(arr, len);
-	w_pb(&stack);
-	w_pb(&stack);
-	w_pb(&stack);
-	print_stacks(stack);
-	ft_printf("Current status -> [%d]\n", stack_top3_status(stack->stack_a));
-	msort_top3_stacks(&stack);
-	do_ops(&stack);
-	print_stacks(stack);
-	if (cmp_stacks(sorted, stack) == 0)
-	{
-		free_stacks(&stack);
-		ft_printf("[FAILED]\n");
-		return (1);
-	}
-	ft_printf("[PASSED]\n");
-	return (0);
-}
-
 int	top3_sort_test(void)
 {
 	t_psstacks *stack_vsorted;
 	t_psstacks *stack_msorted;
+	t_psstacks *stack_asorted;
+	t_psstacks *stack_dsorted;
 	int v_sorted[6] = {3, 2, 1, 4, 5, 6};
 	int m_sorted[6] = {1, 2, 3, 6, 5, 4};
+	int a_sorted[6] = {1, 2, 3, 4, 5, 6};
+	int d_sorted[6] = {6, 5, 4, 3, 2, 1};
+	stack_vsorted = init_stacks_from_array(v_sorted, 6);
+	stack_msorted = init_stacks_from_array(m_sorted, 6);
+	stack_asorted = init_stacks_from_array(a_sorted, 6);
+	stack_dsorted = init_stacks_from_array(d_sorted, 6);
+	w_pbn(&stack_vsorted, 3);
+	w_pbn(&stack_msorted, 3);
+	w_pbn(&stack_asorted, 3);
+	w_pbn(&stack_dsorted, 3);
 	int	arr01[6] = {1, 2, 3, 4, 5, 6};
 	int	arr02[6] = {1, 3, 2, 4, 5, 6};
 	int	arr03[6] = {2, 1, 3, 4, 5, 6};
@@ -142,43 +80,67 @@ int	top3_sort_test(void)
 	int	arr14[6] = {1, 2, 3, 5, 6, 4};
 	int	arr15[6] = {1, 2, 3, 6, 4, 5};
 	int	arr16[6] = {1, 2, 3, 6, 5, 4};
-	stack_vsorted = init_stacks_from_array(v_sorted, 6);
-	stack_msorted = init_stacks_from_array(m_sorted, 6);
-	w_pb(&stack_vsorted);
-	w_pb(&stack_vsorted);
-	w_pb(&stack_vsorted);
-	print_stacks(stack_vsorted);
-	test_vsort_top3(stack_vsorted, arr01, 6);
-	test_vsort_top3(stack_vsorted, arr02, 6);
-	test_vsort_top3(stack_vsorted, arr03, 6);
-	test_vsort_top3(stack_vsorted, arr04, 6);
-	test_vsort_top3(stack_vsorted, arr05, 6);
-	test_vsort_top3(stack_vsorted, arr06, 6);
-	test_vsort_top3(stack_vsorted, arr11, 6);
-	test_vsort_top3(stack_vsorted, arr12, 6);
-	test_vsort_top3(stack_vsorted, arr13, 6);
-	test_vsort_top3(stack_vsorted, arr14, 6);
-	test_vsort_top3(stack_vsorted, arr15, 6);
-	test_vsort_top3(stack_vsorted, arr16, 6);
 
-	w_pb(&stack_msorted);
-	w_pb(&stack_msorted);
-	w_pb(&stack_msorted);
+	print_stacks(stack_vsorted);
+	test_vsort_top3(stack_vsorted, arr01, 6, 0);
+	test_vsort_top3(stack_vsorted, arr02, 6, 0);
+	test_vsort_top3(stack_vsorted, arr03, 6, 0);
+	test_vsort_top3(stack_vsorted, arr04, 6, 0);
+	test_vsort_top3(stack_vsorted, arr05, 6, 0);
+	test_vsort_top3(stack_vsorted, arr06, 6, 0);
+	test_vsort_top3(stack_vsorted, arr11, 6, 0);
+	test_vsort_top3(stack_vsorted, arr12, 6, 0);
+	test_vsort_top3(stack_vsorted, arr13, 6, 0);
+	test_vsort_top3(stack_vsorted, arr14, 6, 0);
+	test_vsort_top3(stack_vsorted, arr15, 6, 0);
+	test_vsort_top3(stack_vsorted, arr16, 6, 0);
+
 	print_stacks(stack_msorted);
-	test_msort_top3(stack_msorted, arr01, 6);
-	test_msort_top3(stack_msorted, arr02, 6);
-	test_msort_top3(stack_msorted, arr03, 6);
-	test_msort_top3(stack_msorted, arr04, 6);
-	test_msort_top3(stack_msorted, arr05, 6);
-	test_msort_top3(stack_msorted, arr06, 6);
-	test_msort_top3(stack_msorted, arr11, 6);
-	test_msort_top3(stack_msorted, arr12, 6);
-	test_msort_top3(stack_msorted, arr13, 6);
-	test_msort_top3(stack_msorted, arr14, 6);
-	test_msort_top3(stack_msorted, arr15, 6);
-	test_msort_top3(stack_msorted, arr16, 6);
-	free_stacks(&stack_msorted);
-	free_stacks(&stack_vsorted);
+	test_msort_top3(stack_msorted, arr01, 6, 0);
+	test_msort_top3(stack_msorted, arr02, 6, 0);
+	test_msort_top3(stack_msorted, arr03, 6, 0);
+	test_msort_top3(stack_msorted, arr04, 6, 0);
+	test_msort_top3(stack_msorted, arr05, 6, 0);
+	test_msort_top3(stack_msorted, arr06, 6, 0);
+	test_msort_top3(stack_msorted, arr11, 6, 0);
+	test_msort_top3(stack_msorted, arr12, 6, 0);
+	test_msort_top3(stack_msorted, arr13, 6, 0);
+	test_msort_top3(stack_msorted, arr14, 6, 0);
+	test_msort_top3(stack_msorted, arr15, 6, 0);
+	test_msort_top3(stack_msorted, arr16, 6, 0);
+
+	print_stacks(stack_asorted);
+	test_asort_top3(stack_asorted, arr01, 6, 0);
+	test_asort_top3(stack_asorted, arr02, 6, 0);
+	test_asort_top3(stack_asorted, arr03, 6, 0);
+	test_asort_top3(stack_asorted, arr04, 6, 0);
+	test_asort_top3(stack_asorted, arr05, 6, 0);
+	test_asort_top3(stack_asorted, arr06, 6, 0);
+	test_asort_top3(stack_asorted, arr11, 6, 0);
+	test_asort_top3(stack_asorted, arr12, 6, 0);
+	test_asort_top3(stack_asorted, arr13, 6, 0);
+	test_asort_top3(stack_asorted, arr14, 6, 0);
+	test_asort_top3(stack_asorted, arr15, 6, 0);
+	test_asort_top3(stack_asorted, arr16, 6, 0);
+
+	print_stacks(stack_dsorted);
+	test_dsort_top3(stack_dsorted, arr01, 6, 1);
+	test_dsort_top3(stack_dsorted, arr02, 6, 0);
+	test_dsort_top3(stack_dsorted, arr03, 6, 0);
+	test_dsort_top3(stack_dsorted, arr04, 6, 0);
+	test_dsort_top3(stack_dsorted, arr05, 6, 0);
+	test_dsort_top3(stack_dsorted, arr06, 6, 0);
+	test_dsort_top3(stack_dsorted, arr11, 6, 0);
+	test_dsort_top3(stack_dsorted, arr12, 6, 0);
+	test_dsort_top3(stack_dsorted, arr13, 6, 0);
+	test_dsort_top3(stack_dsorted, arr14, 6, 0);
+	test_dsort_top3(stack_dsorted, arr15, 6, 0);
+	test_dsort_top3(stack_dsorted, arr16, 6, 0);
+
+	//free_stacks(&stack_msorted);
+	//free_stacks(&stack_vsorted);
+	//free_stacks(&stack_asorted);
+	//free_stacks(&stack_dsorted);
 	return (0);
 }
 
@@ -681,9 +643,10 @@ int	main(int argc, char **argv)
 	(void)argv;
 	//main_2();
 	//merge_test();
-	merge_test2();
-	int *arr = create_sort_orders(8);
-	merge_test3(arr);
+	top3_sort_test();
+	//merge_test2();
+	//int *arr = create_sort_orders(8);
+	//merge_test3(arr);
 
 	//stacks = init_stacks(argc, argv);
 	//return(0);

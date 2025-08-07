@@ -6,13 +6,13 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 22:32:33 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/08/07 06:33:17 by marvin           ###   ########.fr       */
+/*   Updated: 2025/07/22 16:48:46 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	del_single_node(t_cdlist *node)
+void	del_cdlstnode(t_cdlist *node)
 {
 	if (node == NULL)
 		return ;
@@ -40,27 +40,4 @@ t_cdlist	*pop_cdlstnode(t_cdlist	*node)
 	node->next = NULL;
 	node->prev = NULL;
 	return (node);
-}
-
-// Delete and free entire circulated list.
-void	delete_cdlst(t_cdlist **lst)
-{
-	t_cdlist	*current;
-	t_cdlist	*nil;
-	t_cdlist	*tmp;
-	
-	if (lst == NULL || (*lst) == NULL)
-		return ;
-	nil = cdlst_find_nil(*lst);
-	if (nil == NULL)
-		return ;
-	current = nil->next;
-	while (current != nil)
-	{
-		tmp = current;
-		current = current->next;
-		del_single_node(tmp);
-	}
-	del_single_node(nil);
-	*lst = NULL;
 }
