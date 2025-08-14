@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 00:19:33 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/11 16:22:08 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/14 20:52:51 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -578,11 +578,12 @@ int	radix_sort_stacks(t_psstacks **stacks, int n)
 		{
 			top = cdlst_find_head((*stacks)->stack_a);
 			if ((top->content->value & (1 << j)) != 0)
-				w_rra(stacks);
+				w_ra(stacks);
+				//w_rra(stacks);
 			else
 				w_pb(stacks);
 			i++;
-			print_stacks(*stacks);
+			//print_stacks(*stacks);
 		}
 		//print_stacks(*stacks);
 		push_all_to_stack_a(stacks);
@@ -724,7 +725,7 @@ int	merge_test4(void)
 	push_all_to_stack_a(&test_stack01);
 	radix_sort_stacks(&test_stack01, n);
 	//ft_printf("FINISHED [%d]\n", test_stack01->op_count);
-	print_sort_ops(&test_stack01);
+	//print_sort_ops(&test_stack01);
 	return (0);
 }
 
@@ -741,33 +742,40 @@ int	main(int argc, char **argv)
 	//top2_sort_test();
 	//top3_sort_test();
 	//merge_test();
+	//merge_test4();
 	//merge_test2();
+	//return (0);
 	if (argc == 1)
 		return (0);
 	status = 0;
 	if (argc == 2)
 	{
+		//ft_printf("AAA");
 		char	**splitted;
 		splitted = ft_split((const char *)argv[1], ' ');
-		argc = 1;
-		while (argv[argc - 1] != NULL)
+		int argc2 = 1;
+		while (splitted[argc2 - 1] != NULL)
 		{
-			argc++;
+			argc2++;
 		}
 		//ft_printf("argc->[%d]", argc);
 		//ft_printf("argv[0]->[%d]", argc);
 		int	i;
 		i = 0;
 		char	**newargv;
-		newargv = (char **)ft_calloc(sizeof(char *), argc + 1);
+		newargv = (char **)ft_calloc(sizeof(char *), argc2 + 1);
 		newargv[0] = ft_strdup(argv[0]);
 		i++;
-		while (i < argc)
+		while (i < argc2)
 		{
 			newargv[i] = ft_strdup(splitted[i - 1]);
 			i++;
 		}
 		argv = newargv;
+		//ft_printf("atata 1 -> %d", argc);
+		//ft_printf("atata 2 -> %d", argc2);
+		//ft_printf("atata 3 -> %d", i );
+		argc = argc2;
 	}
 	status += validate_args(argc, argv);
 	if (status > 0)
