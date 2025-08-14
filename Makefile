@@ -28,7 +28,7 @@ SORT_OBJS = $(addprefix $(OBJDIR)/, $(SORT:.c=.o))
 TEST = top3sort_test.c
 TEST_OBJS = $(addprefix $(OBJDIR)/, $(TEST:.c=.o))
 
-SRCS += rotate_merge.c rev_rotate_merge.c
+#SRCS += rotate_merge.c rev_rotate_merge.c
 OBJS = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
 
 CFLAGS = -Wall -Wextra -Werror
