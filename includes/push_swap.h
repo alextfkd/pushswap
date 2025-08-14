@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 00:30:49 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/07 06:39:56 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/11 00:43:48 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,18 @@
 #define PUSH_A2B 1
 #define PUSH_B2A -1
 
+#define SA 2
+#define SB -2
+#define SS 20
+#define PA 1
+#define PB -1
+#define RA 3
+#define RRA -3
+#define RB 4
+#define RRB -4
+#define RR 5
+#define RRR -5
+
 typedef	struct	s_psdata
 {
 	int	value;
@@ -74,6 +86,7 @@ typedef struct s_psstacks
 {
 	t_cdlist	*stack_a;
 	t_cdlist	*stack_b;
+	t_cdlist	*stack_ops;
 	char		*a_ops;
 	char		*b_ops;
 	int			op_count;
@@ -146,7 +159,7 @@ int	rev_rotate_merge(
 int	cdlist_count_sorted(t_cdlist *head);
 
 t_cdlist	*create_stack_from_arr(int *arr, int len);
-t_psstacks	*create_stacks_from_cdlist(t_cdlist *stack_a, t_cdlist *stack_b);
+t_psstacks	*create_stacks_from_cdlist(t_cdlist *stack_a, t_cdlist *stack_b, t_cdlist *stack_ops);
 void	free_cdlst_node(t_cdlist *lst);
 int		cmp_cdlst(t_cdlist	*stack_1, t_cdlist *stack_2);
 int	cdlst_len(t_cdlist *lst);
@@ -161,9 +174,15 @@ int	dsort_top3_stacks(t_psstacks **stack);
 int	cdlist_count_sorted(t_cdlist *lst);
 t_psstacks	*init_stacks_from_array(int *arr, int len);
 
+int	top3_sort_test(void);
+int	top2_sort_test(void);
 int	test_vsort_top3(t_psstacks *sorted, int *arr, int len, int print);
 int	test_msort_top3(t_psstacks *sorted, int *arr, int len, int print);
 int	test_asort_top3(t_psstacks *sorted, int *arr, int len, int print);
 int	test_dsort_top3(t_psstacks *sorted, int *arr, int len, int print);
+int	test_vsort_top2(t_psstacks *sorted, int *arr, int len, int print);
+int	test_msort_top2(t_psstacks *sorted, int *arr, int len, int print);
+int	test_asort_top2(t_psstacks *sorted, int *arr, int len, int print);
+int	test_dsort_top2(t_psstacks *sorted, int *arr, int len, int print);
 
 #endif

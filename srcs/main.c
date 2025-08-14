@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 00:19:33 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/07 05:17:30 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/11 16:22:08 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,100 +47,6 @@ int	merge_sorted_substacks(t_psstacks **stacks, int order, int push_toward)
 	//print_stacks(*stacks);
 	(*stacks)->a_sort_len = 0;
 	(*stacks)->b_sort_len = 0;
-	return (0);
-}
-
-int	top3_sort_test(void)
-{
-	t_psstacks *stack_vsorted;
-	t_psstacks *stack_msorted;
-	t_psstacks *stack_asorted;
-	t_psstacks *stack_dsorted;
-	int v_sorted[6] = {3, 2, 1, 4, 5, 6};
-	int m_sorted[6] = {1, 2, 3, 6, 5, 4};
-	int a_sorted[6] = {1, 2, 3, 4, 5, 6};
-	int d_sorted[6] = {6, 5, 4, 3, 2, 1};
-	stack_vsorted = init_stacks_from_array(v_sorted, 6);
-	stack_msorted = init_stacks_from_array(m_sorted, 6);
-	stack_asorted = init_stacks_from_array(a_sorted, 6);
-	stack_dsorted = init_stacks_from_array(d_sorted, 6);
-	w_pbn(&stack_vsorted, 3);
-	w_pbn(&stack_msorted, 3);
-	w_pbn(&stack_asorted, 3);
-	w_pbn(&stack_dsorted, 3);
-	int	arr01[6] = {1, 2, 3, 4, 5, 6};
-	int	arr02[6] = {1, 3, 2, 4, 5, 6};
-	int	arr03[6] = {2, 1, 3, 4, 5, 6};
-	int	arr04[6] = {2, 3, 1, 4, 5, 6};
-	int	arr05[6] = {3, 1, 2, 4, 5, 6};
-	int	arr06[6] = {3, 2, 1, 4, 5, 6};
-	int	arr11[6] = {1, 2, 3, 4, 5, 6};
-	int	arr12[6] = {1, 2, 3, 4, 6, 5};
-	int	arr13[6] = {1, 2, 3, 5, 4, 6};
-	int	arr14[6] = {1, 2, 3, 5, 6, 4};
-	int	arr15[6] = {1, 2, 3, 6, 4, 5};
-	int	arr16[6] = {1, 2, 3, 6, 5, 4};
-
-	print_stacks(stack_vsorted);
-	test_vsort_top3(stack_vsorted, arr01, 6, 0);
-	test_vsort_top3(stack_vsorted, arr02, 6, 0);
-	test_vsort_top3(stack_vsorted, arr03, 6, 0);
-	test_vsort_top3(stack_vsorted, arr04, 6, 0);
-	test_vsort_top3(stack_vsorted, arr05, 6, 0);
-	test_vsort_top3(stack_vsorted, arr06, 6, 0);
-	test_vsort_top3(stack_vsorted, arr11, 6, 0);
-	test_vsort_top3(stack_vsorted, arr12, 6, 0);
-	test_vsort_top3(stack_vsorted, arr13, 6, 0);
-	test_vsort_top3(stack_vsorted, arr14, 6, 0);
-	test_vsort_top3(stack_vsorted, arr15, 6, 0);
-	test_vsort_top3(stack_vsorted, arr16, 6, 0);
-
-	print_stacks(stack_msorted);
-	test_msort_top3(stack_msorted, arr01, 6, 0);
-	test_msort_top3(stack_msorted, arr02, 6, 0);
-	test_msort_top3(stack_msorted, arr03, 6, 0);
-	test_msort_top3(stack_msorted, arr04, 6, 0);
-	test_msort_top3(stack_msorted, arr05, 6, 0);
-	test_msort_top3(stack_msorted, arr06, 6, 0);
-	test_msort_top3(stack_msorted, arr11, 6, 0);
-	test_msort_top3(stack_msorted, arr12, 6, 0);
-	test_msort_top3(stack_msorted, arr13, 6, 0);
-	test_msort_top3(stack_msorted, arr14, 6, 0);
-	test_msort_top3(stack_msorted, arr15, 6, 0);
-	test_msort_top3(stack_msorted, arr16, 6, 0);
-
-	print_stacks(stack_asorted);
-	test_asort_top3(stack_asorted, arr01, 6, 0);
-	test_asort_top3(stack_asorted, arr02, 6, 0);
-	test_asort_top3(stack_asorted, arr03, 6, 0);
-	test_asort_top3(stack_asorted, arr04, 6, 0);
-	test_asort_top3(stack_asorted, arr05, 6, 0);
-	test_asort_top3(stack_asorted, arr06, 6, 0);
-	test_asort_top3(stack_asorted, arr11, 6, 0);
-	test_asort_top3(stack_asorted, arr12, 6, 0);
-	test_asort_top3(stack_asorted, arr13, 6, 0);
-	test_asort_top3(stack_asorted, arr14, 6, 0);
-	test_asort_top3(stack_asorted, arr15, 6, 0);
-	test_asort_top3(stack_asorted, arr16, 6, 0);
-
-	print_stacks(stack_dsorted);
-	test_dsort_top3(stack_dsorted, arr01, 6, 1);
-	test_dsort_top3(stack_dsorted, arr02, 6, 0);
-	test_dsort_top3(stack_dsorted, arr03, 6, 0);
-	test_dsort_top3(stack_dsorted, arr04, 6, 0);
-	test_dsort_top3(stack_dsorted, arr05, 6, 0);
-	test_dsort_top3(stack_dsorted, arr06, 6, 0);
-	test_dsort_top3(stack_dsorted, arr11, 6, 0);
-	test_dsort_top3(stack_dsorted, arr12, 6, 0);
-	test_dsort_top3(stack_dsorted, arr13, 6, 0);
-	test_dsort_top3(stack_dsorted, arr14, 6, 0);
-	test_dsort_top3(stack_dsorted, arr15, 6, 0);
-	test_dsort_top3(stack_dsorted, arr16, 6, 0);
-
-	//free_stacks(&stack_msorted);
-	//free_stacks(&stack_vsorted);
-	//free_stacks(&stack_asorted);
-	//free_stacks(&stack_dsorted);
 	return (0);
 }
 
@@ -579,88 +485,314 @@ int	merge_test3(int *arr)
 	}
 	ft_printf("\n");
 	i = 0;
-	while (i < arrlen)
+	while (i <= arrlen)
 	{
 		ft_printf("NEW LOOP\n\n");
 		w_pbn(&test_stack01, 3);
 		print_stacks(test_stack01);
 		//if (arr[i] == 1 && arr[i + 1] == 0)
-		if (arr[i] == 1)
+		if (arr[arrlen - i] == 3)
 			vsort_top3_stacks(&test_stack01);
 		//else if (arr[i] == 0 && arr[i + 1] == 1)
-		else if (arr[i] == 0)
+		else if (arr[arrlen - i] == 3)
 			msort_top3_stacks(&test_stack01);
 		else
-			return (1);
+			asort_top3_stacks(&test_stack01);
 		do_ops(&test_stack01);
 		w_pbn(&test_stack01, 3);
 		print_stacks(test_stack01);
 		ft_printf("672 line\n\n");
-		//w_pbn(&test_stack01, cdlist_count_sorted((test_stack01)->stack_a));
-		if (test_stack01->stack_a->next->content == NULL)
+		i++;
+	}
+	while (cdlst_len(test_stack01->stack_b) > 0)
+		w_pa(&test_stack01);
+
+	int j = 0;
+	while (j < 8)
+	{
+		ft_printf("\n\n");
+		print_stacks(test_stack01);
+		i = 0;
+		while (i < 24)
 		{
-			ft_printf("MERGE 1 !!\n\n");
-			w_pan(&test_stack01, cdlist_count_sorted((test_stack01)->stack_b));
+			t_cdlist *top;
+			top = cdlst_find_head(test_stack01->stack_a);
+			if ((top->content->value & (1 << j)) != 0)
+				w_ra(&test_stack01);
+			else
+				w_pb(&test_stack01);
+			i++;
 			print_stacks(test_stack01);
-			merge_sorted_substacks(&test_stack01, get_m_or_v(test_stack01), PUSH_B2A);
-			print_stacks(test_stack01);
-			w_pan(&test_stack01, cdlist_count_sorted((test_stack01)->stack_b));
-			print_stacks(test_stack01);
-			merge_sorted_substacks(&test_stack01, get_m_or_v(test_stack01), PUSH_B2A);
-			w_pan(&test_stack01, cdlist_count_sorted((test_stack01)->stack_b));
-			print_stacks(test_stack01);
-			merge_sorted_substacks(&test_stack01, get_m_or_v(test_stack01), PUSH_B2A);
-			w_pan(&test_stack01, cdlist_count_sorted((test_stack01)->stack_b));
-			print_stacks(test_stack01);
-			merge_sorted_substacks(&test_stack01, get_m_or_v(test_stack01), PUSH_B2A);
-			print_stacks(test_stack01);
-
-			ft_printf("MERGE 2 !!\n\n");
-			w_pbn(&test_stack01, cdlist_count_sorted((test_stack01)->stack_a));
-			print_stacks(test_stack01);
-			merge_sorted_substacks(&test_stack01, get_m_or_v(test_stack01), PUSH_A2B);
-			print_stacks(test_stack01);
-			w_pbn(&test_stack01, cdlist_count_sorted((test_stack01)->stack_a));
-			print_stacks(test_stack01);
-			w_pbn(&test_stack01, cdlist_count_sorted((test_stack01)->stack_a));
-			print_stacks(test_stack01);
-			ft_printf("!");
-			merge_sorted_substacks(&test_stack01, get_m_or_v(test_stack01), PUSH_B2A);
-			print_stacks(test_stack01);
-			break;
-
 		}
+		print_stacks(test_stack01);
+		while (cdlst_len(test_stack01->stack_b) > 0)
+			w_pa(&test_stack01);
+		print_stacks(test_stack01);
+		j++;
+	}
+	ft_printf("[%d]\n", cdlst_find_head(test_stack01->stack_a)->content->value);
+	ft_printf("FINISHED [%d]\n", test_stack01->op_count);
+	return (0);
+}
+
+int	presort_stacks(t_psstacks **stacks)
+{
+	int i;
+	int arrlen;
+
+	//ft_printf("PRESORT -> %p\n", (*stacks)->stack_ops->next->content);
+	i = 0;
+	arrlen = cdlst_len((*stacks)->stack_a) + cdlst_len((*stacks)->stack_b);
+	while (i <= arrlen / 6)
+	{
+		w_pbn(stacks, 3);
+		asort_top3_stacks(stacks);
+		do_ops(stacks);
+		w_pbn(stacks, 3);
+		i++;
 	}
 	return (0);
 }
 
+int	push_all_to_stack_a(t_psstacks **stacks)
+{
+	while (cdlst_len((*stacks)->stack_b) > 0)
+		w_pa(stacks);
+	return (0);
+}
+
+int	radix_sort_stacks(t_psstacks **stacks, int n)
+{
+	t_cdlist *top;
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (j < 31)
+	{
+		//ft_printf("\n\n");
+		//print_stacks(*stacks);
+		i = 0;
+		while (i < n)
+		{
+			top = cdlst_find_head((*stacks)->stack_a);
+			if ((top->content->value & (1 << j)) != 0)
+				w_rra(stacks);
+			else
+				w_pb(stacks);
+			i++;
+			print_stacks(*stacks);
+		}
+		//print_stacks(*stacks);
+		push_all_to_stack_a(stacks);
+		if (if_stack_a_sorted(*stacks) == 1 )
+			break;
+		//print_stacks(*stacks);
+		j++;
+	}
+	return (0);
+}
+
+int	set_rank_for_sorted(t_psstacks **stacks)
+{
+	int				i;
+	t_cdlist	*tmp;
+
+	i = 0;
+	//ft_printf("RANK FOR SORTED-> %p\n", (*stacks)->stack_ops->next->content);
+	tmp = cdlst_find_head((*stacks)->stack_a);
+	while (tmp->content != NULL)
+	{
+		tmp->content->value = i++;
+		//tmp->content->rank = i++;
+		tmp = tmp->next;
+	}
+	//ft_printf("tail[%d]", tmp->prev->content->rank);
+	return (0);
+}
+
+int	reverse_sorted(t_psstacks **stacks)
+{
+	t_cdlist	*tmp;
+
+	//ft_printf("REVERSE SORT -> %p\n", (*stacks)->stack_ops->next->content);
+	tmp = (*stacks)->stack_ops->next;
+	if (tmp == NULL)
+	{
+		(*stacks)->stack_ops->next = (*stacks)->stack_ops;
+		ft_printf("ERROR9");
+		exit(1);
+	}
+	//ft_printf("tmp -> %d", (*stacks)->stack_ops->next->content->value);
+	while (tmp->content != NULL)
+	{
+		//ft_printf("[%d]",tmp->content->value);
+		if (tmp->content->value == PA)
+			w_pb(stacks);
+		else if (tmp->content->value == PB)
+			w_pa(stacks);
+		else if (tmp->content->value == SA)
+			w_sa(stacks);
+		else if (tmp->content->value == SB)
+			w_sb(stacks);
+		else if (tmp->content->value == SS)
+			w_ss(stacks);
+		else if (tmp->content->value == RA)
+			w_rra(stacks);
+		else if (tmp->content->value == RB)
+			w_rrb(stacks);
+		else if (tmp->content->value == RR)
+			w_rrr(stacks);
+		else if (tmp->content->value == RRA)
+			w_ra(stacks);
+		else if (tmp->content->value == RRB)
+			w_rb(stacks);
+		else if (tmp->content->value == RRR)
+			w_rr(stacks);
+		else
+			break;
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
+int	print_sort_ops(t_psstacks **stacks)
+{
+	t_cdlist	*tmp;
+
+	tmp = cdlst_find_tail((*stacks)->stack_ops);
+	/*
+	tmp = (*stacks)->stack_ops->next;
+	if (tmp == NULL)
+	{
+		(*stacks)->stack_ops->next = (*stacks)->stack_ops;
+		ft_printf("ERROR9");
+		exit(1);
+	}
+	*/
+	//ft_printf("tmp -> %d", (*stacks)->stack_ops->next->content->value);
+	while (tmp->content != NULL)
+	{
+		if (tmp->content->value == PA)
+			ft_printf("pa\n");
+		else if (tmp->content->value == PB)
+			ft_printf("pb\n");
+		else if (tmp->content->value == SA)
+			ft_printf("sa\n");
+		else if (tmp->content->value == SB)
+			ft_printf("sb\n");
+		else if (tmp->content->value == SS)
+			ft_printf("ss\n");
+		else if (tmp->content->value == RA)
+			ft_printf("ra\n");
+		else if (tmp->content->value == RB)
+			ft_printf("rb\n");
+		else if (tmp->content->value == RR)
+			ft_printf("rr\n");
+		else if (tmp->content->value == RRA)
+			ft_printf("rra\n");
+		else if (tmp->content->value == RRB)
+			ft_printf("rrb\n");
+		else if (tmp->content->value == RRR)
+			ft_printf("rrr\n");
+		else
+			break;
+		tmp = tmp->prev;
+	}
+	return (0);
+}
+
+int	merge_test4(void)
+{
+	t_psstacks	*test_stack01;
+	int	arr02[24] = {24, 23, 22, 14, 13, 12, 11, 21, 20, 19, 18, 17, 16, 15, -10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+	test_stack01 = init_stacks_from_array(arr02, 24);
+	//print_stacks(test_stack01);
+	int n = cdlst_len(test_stack01->stack_a);
+	presort_stacks(&test_stack01);
+	push_all_to_stack_a(&test_stack01);
+	radix_sort_stacks(&test_stack01, n);
+	set_rank_for_sorted(&test_stack01);
+	reverse_sorted(&test_stack01);
+	free(test_stack01->stack_ops);
+	test_stack01->stack_ops = ft_cdlstinit();
+	test_stack01->op_count = 0;
+	free(test_stack01->a_ops);
+	free(test_stack01->b_ops);
+	presort_stacks(&test_stack01);
+	push_all_to_stack_a(&test_stack01);
+	radix_sort_stacks(&test_stack01, n);
+	//ft_printf("FINISHED [%d]\n", test_stack01->op_count);
+	print_sort_ops(&test_stack01);
+	return (0);
+}
+
+
 int	main(int argc, char **argv)
 {
-	//t_psstacks	*stacks;
-	//int	status;
+	t_psstacks	*stacks;
+	int	status;
 
-	(void)argc;
-	(void)argv;
+	//(void)argc;
+	//(void)argv;
+	//merge_test4();
 	//main_2();
+	//top2_sort_test();
+	//top3_sort_test();
 	//merge_test();
-	top3_sort_test();
 	//merge_test2();
-	//int *arr = create_sort_orders(8);
-	//merge_test3(arr);
-
-	//stacks = init_stacks(argc, argv);
-	//return(0);
-	/*
 	if (argc == 1)
 		return (0);
 	status = 0;
+	if (argc == 2)
+	{
+		char	**splitted;
+		splitted = ft_split((const char *)argv[1], ' ');
+		argc = 1;
+		while (argv[argc - 1] != NULL)
+		{
+			argc++;
+		}
+		//ft_printf("argc->[%d]", argc);
+		//ft_printf("argv[0]->[%d]", argc);
+		int	i;
+		i = 0;
+		char	**newargv;
+		newargv = (char **)ft_calloc(sizeof(char *), argc + 1);
+		newargv[0] = ft_strdup(argv[0]);
+		i++;
+		while (i < argc)
+		{
+			newargv[i] = ft_strdup(splitted[i - 1]);
+			i++;
+		}
+		argv = newargv;
+	}
 	status += validate_args(argc, argv);
 	if (status > 0)
 	{
+		ft_printf("!!!!!!!!!!!!");
 		ft_perror(status);
 		exit(status);
 	}
-	*/
+	stacks = init_stacks(argc, argv);
+	int n = cdlst_len(stacks->stack_a);
+	presort_stacks(&stacks);
+	push_all_to_stack_a(&stacks);
+	radix_sort_stacks(&stacks, n);
+	set_rank_for_sorted(&stacks);
+	reverse_sorted(&stacks);
+	free(stacks->stack_ops);
+	stacks->stack_ops = ft_cdlstinit();
+	stacks->op_count = 0;
+	free(stacks->a_ops);
+	free(stacks->b_ops);
+	presort_stacks(&stacks);
+	push_all_to_stack_a(&stacks);
+	radix_sort_stacks(&stacks, n);
+	print_sort_ops(&stacks);
+	return (0);
 	/*
 	ft_printf("\n");
 	stacks = init_stacks(argc, argv);
@@ -764,7 +896,6 @@ int	main(int argc, char **argv)
 	swap_forward(&(stacks->stack_a));
 	print_stacks(stacks);
 	*/
-	return (0);
 }
 
 

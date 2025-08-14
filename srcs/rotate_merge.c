@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 21:10:26 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/07/29 16:08:15 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/08 06:39:26 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ static int	_a2b_rotate_merge_asc(t_psstacks **stacks)
 			w_pb(stacks);
 			w_rb(stacks);
 			(*stacks)->a_sort_len--;
+			(*stacks)->b_sort_len++;
 			r_count++;
 		}
 		else if (a_head->content->value > b_head->content->value)
 		{
 			ft_printf("[p2: ] ");
 			w_rb(stacks);
-			(*stacks)->b_sort_len--;
 			r_count++;
 		}
 		else
@@ -47,6 +47,7 @@ static int	_a2b_rotate_merge_asc(t_psstacks **stacks)
 			w_rb(stacks);
 			r_count++;
 			(*stacks)->a_sort_len--;
+			(*stacks)->b_sort_len++;
 		}
 		a_head = cdlst_find_head((*stacks)->stack_a);
 		b_head = cdlst_find_head((*stacks)->stack_b);
@@ -80,7 +81,6 @@ static int	_b2a_rotate_merge_asc(t_psstacks **stacks)
 		{
 			ft_printf("[p2: ] ");
 			w_ra(stacks);
-			(*stacks)->a_sort_len--;
 			r_count++;
 		}
 		else
@@ -123,7 +123,6 @@ static int	_b2a_rotate_merge_desc(t_psstacks **stacks)
 		{
 			ft_printf("[p2: ] ");
 			w_ra(stacks);
-			(*stacks)->a_sort_len--;
 			r_count++;
 		}
 		else

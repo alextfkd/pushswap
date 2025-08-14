@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stacks_from_arr.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 10:46:33 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/08/07 10:47:08 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/08/11 00:46:10 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ t_psstacks	*init_stacks_from_array(int *arr, int len)
 	t_psstacks	*stacks;
 	t_cdlist	*stack_a;
 	t_cdlist	*stack_b;
+	t_cdlist	*stack_ops;
 
 	if (arr == NULL || len <= 0)
 		return (NULL);
@@ -29,11 +30,19 @@ t_psstacks	*init_stacks_from_array(int *arr, int len)
 		free_cdlst_node(stack_a);
 		return (NULL);
 	}
-	stacks = create_stacks_from_cdlist(stack_a, stack_b);
+	stack_ops = ft_cdlstinit();
+	if (stack_ops == NULL)
+	{
+		free_cdlst_node(stack_a);
+		free_cdlst_node(stack_b);
+		return (NULL);
+	}
+	stacks = create_stacks_from_cdlist(stack_a, stack_b, stack_ops);
 	if (stacks == NULL)
 	{
-		delete_cdlst(stack_a);
-		delete_cdlst(stack_b);
+		delete_cdlst(&stack_a);
+		delete_cdlst(&stack_b);
+		delete_cdlst(&stack_ops);
 		return (NULL);
 	}
 	return (stacks);

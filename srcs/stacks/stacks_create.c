@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stacks_create.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 18:23:00 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/08/07 12:28:19 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/08/11 00:43:09 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static t_psstacks	*_create_stacks(void)
 		return (NULL);
 	stacks->stack_a = ft_cdlstinit();
 	stacks->stack_b = ft_cdlstinit();
+	stacks->stack_ops = ft_cdlstinit();
 	stacks->a_ops = NULL;
 	stacks->b_ops = NULL;
 	stacks->op_count = 0;
@@ -98,7 +99,7 @@ t_psstacks	*init_stacks(int argc, char **argv)
 }
 
 
-t_psstacks	*create_stacks_from_cdlist(t_cdlist *stack_a, t_cdlist *stack_b)
+t_psstacks	*create_stacks_from_cdlist(t_cdlist *stack_a, t_cdlist *stack_b, t_cdlist *stack_ops)
 {
 	t_psstacks	*stacks;
 
@@ -109,6 +110,7 @@ t_psstacks	*create_stacks_from_cdlist(t_cdlist *stack_a, t_cdlist *stack_b)
 		return (NULL);
 	stacks->stack_a = stack_a;
 	stacks->stack_b = stack_b;
+	stacks->stack_ops = stack_ops;
 	stacks->a_ops = NULL;
 	stacks->b_ops = NULL;
 	stacks->op_count = 0;
