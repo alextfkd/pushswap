@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cdlst_create.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 21:23:23 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/07/29 06:19:36 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/14 21:58:16 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ t_cdlist	*create_cdlst_node(const int value)
 
 t_cdlist	*create_stack_from_arr(int *arr, int len)
 {
-	t_cdlist 	*stack;
-	t_cdlist 	*node;
+	t_cdlist	*stack;
+	t_cdlist	*node;
 	int			status;
 	int			i;
 
@@ -86,17 +86,12 @@ t_cdlist	*create_stack_from_arr(int *arr, int len)
 	while (i < len)
 	{
 		node = create_cdlst_node(arr[i++]);
-		if (node == NULL)
-		{
-			free_cdlst_node(stack);
-			return (NULL);
-		}
-		status += insert_nil_prev(&stack,node);
-		if (status > 0)
-		{
-			free_cdlst_node(stack);
-			return (NULL);
-		}
+		status += insert_nil_prev(&stack, node);
+	}
+	if (status > 0)
+	{
+		delete_cdlst(&stack);
+		return (NULL);
 	}
 	return (stack);
 }

@@ -6,7 +6,7 @@
 /*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 22:10:37 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/08/07 09:02:59 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/08/14 21:58:51 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,12 @@ void	free_cdlst_node(t_cdlist *lst)
 	free (nil);
 }
 
-int		cmp_cdlst(t_cdlist	*stack_1, t_cdlist *stack_2)
+int	cmp_cdlst(t_cdlist	*stack_1, t_cdlist *stack_2)
 {
-	t_cdlist 	*n1;
-	t_cdlist 	*n2;
-	t_cdlist 	*s1;
-	t_cdlist 	*s2;
+	t_cdlist	*n1;
+	t_cdlist	*n2;
+	t_cdlist	*s1;
+	t_cdlist	*s2;
 
 	if (stack_1 == NULL || stack_2 == NULL)
 		return (0);
