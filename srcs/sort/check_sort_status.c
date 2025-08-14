@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check_sort_status.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 06:01:28 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/07 08:17:21 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/14 22:22:31 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int _stack_top_2_status(t_cdlist *stack)
+static int	_stack_top_2_status(t_cdlist *stack)
 {
 	t_cdlist	*top;
 	int			topv;
@@ -29,7 +29,7 @@ static int _stack_top_2_status(t_cdlist *stack)
 		return (-1);
 }
 
-static int _stack_top_3_status(t_cdlist *stack)
+static int	_stack_top_3_status(t_cdlist *stack)
 {
 	t_cdlist	*top;
 	int			topv;
@@ -55,7 +55,6 @@ static int _stack_top_3_status(t_cdlist *stack)
 	else
 		return (-1);
 }
-
 
 // Returns 3 digit num.
 // top-value rank / next-value rank / next-next-value rank

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   top3_sort_ops.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 06:00:03 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/11 14:07:21 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/14 22:22:51 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static char	*_desc_top3_sort_ops(int top3_status)
 		ops = ft_strdup("sRsrs");
 	else if (top3_status == ORDER_132)
 		ops = ft_strdup("sRsr");
-	else if (top3_status == ORDER_321 )
+	else if (top3_status == ORDER_321)
 		ops = ft_strdup("");
 	else if (top3_status == ORDER_231)
 		ops = ft_strdup("s");
@@ -79,7 +79,6 @@ int	sort_top3_stacks(t_psstacks **stacks, int a_dir, int b_dir)
 
 	top3_status_a = stack_top3_status((*stacks)->stack_a);
 	top3_status_b = stack_top3_status((*stacks)->stack_b);
-	//ft_printf("!!PRESORT -> %p\n", (*stacks)->stack_ops->next->content);
 	if (a_dir == SORT_ASC)
 		a_ops = _asc_top3_sort_ops(top3_status_a);
 	else if (a_dir == SORT_DESC)
