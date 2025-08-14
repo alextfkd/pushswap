@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 00:30:49 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/11 00:43:48 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/14 22:12:52 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ void	print_cdlst(t_cdlist *lst, int stack);
 void	print_stacks(t_psstacks *stacks);
 
 t_cdlist	*pop_cdlstnode(t_cdlist	*node);
-void		delete_cdlst(t_cdlist **lst);
+void		*delete_cdlst(t_cdlist **lst);
 
 int	push_to_a_stack(t_psstacks **stacks);
 int	push_to_b_stack(t_psstacks **stacks);

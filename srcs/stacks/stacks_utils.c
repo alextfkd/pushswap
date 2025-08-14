@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stacks_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 19:07:43 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/08/11 14:58:16 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/14 22:13:25 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int	if_stack_a_sorted(t_psstacks *stacks)
 			return (0);
 		stack_a = stack_a->next;
 	}
-	//ft_printf("STACK A is SORTED!\n");
 	return (1);
 }
 
@@ -57,7 +56,6 @@ int	if_stack_b_sorted(t_psstacks *stacks)
 			return (0);
 		stack_b = stack_b->next;
 	}
-	//ft_printf("STACK B is SORTED!\n");
 	return (1);
 }
 

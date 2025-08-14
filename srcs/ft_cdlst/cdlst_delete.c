@@ -6,7 +6,7 @@
 /*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 22:32:33 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/08/14 21:59:09 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/08/14 22:12:21 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,18 @@ t_cdlist	*pop_cdlstnode(t_cdlist	*node)
 }
 
 // Delete and free entire circulated list.
-void	delete_cdlst(t_cdlist **lst)
+// Returns NULL pointer;
+void	*delete_cdlst(t_cdlist **lst)
 {
 	t_cdlist	*current;
 	t_cdlist	*nil;
 	t_cdlist	*tmp;
 
 	if (lst == NULL || (*lst) == NULL)
-		return ;
+		return (NULL);
 	nil = cdlst_find_nil(*lst);
 	if (nil == NULL)
-		return ;
+		return (NULL);
 	current = nil->next;
 	while (current != nil)
 	{
@@ -63,4 +64,5 @@ void	delete_cdlst(t_cdlist **lst)
 	}
 	del_single_node(nil);
 	*lst = NULL;
+	return (NULL);
 }
