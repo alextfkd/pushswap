@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wrap_s.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 20:27:39 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/08/11 14:15:54 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/14 22:01:03 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	w_sa(t_psstacks **stacks)
 {
-	int	res;
+	int			res;
 	t_cdlist	*new_ops;
 
 	res = swap_forward(&((*stacks)->stack_a));
@@ -29,7 +29,7 @@ int	w_sa(t_psstacks **stacks)
 
 int	w_sb(t_psstacks **stacks)
 {
-	int	res;
+	int			res;
 	t_cdlist	*new_ops;
 
 	res = swap_forward(&((*stacks)->stack_b));
@@ -44,7 +44,7 @@ int	w_sb(t_psstacks **stacks)
 
 int	w_ss(t_psstacks **stacks)
 {
-	int	res;
+	int			res;
 	t_cdlist	*new_ops;
 
 	res = 0;

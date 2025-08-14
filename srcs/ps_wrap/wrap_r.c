@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wrap_r.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 20:27:39 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/08/11 16:19:51 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/14 22:00:28 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	w_ra(t_psstacks **stacks)
 {
-	int	res;
+	int			res;
 	t_cdlist	*new_ops;
 
 	res = rotate_forward(&((*stacks)->stack_a));
@@ -31,7 +31,7 @@ int	w_ra(t_psstacks **stacks)
 
 int	w_rb(t_psstacks **stacks)
 {
-	int	res;
+	int			res;
 	t_cdlist	*new_ops;
 
 	res = rotate_forward(&((*stacks)->stack_b));
@@ -46,7 +46,7 @@ int	w_rb(t_psstacks **stacks)
 
 int	w_rr(t_psstacks **stacks)
 {
-	int	res;
+	int			res;
 	t_cdlist	*new_ops;
 
 	res = 0;

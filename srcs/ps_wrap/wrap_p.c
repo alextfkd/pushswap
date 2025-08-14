@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wrap_p.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 20:21:38 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/08/11 14:12:57 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/14 22:00:06 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	w_pa(t_psstacks **stacks)
 {
-	int	res;
+	int			res;
 	t_cdlist	*new_ops;
 
 	res = push_to_a_stack(stacks);
@@ -29,7 +29,7 @@ int	w_pa(t_psstacks **stacks)
 
 int	w_pb(t_psstacks **stacks)
 {
-	int	res;
+	int			res;
 	t_cdlist	*new_ops;
 
 	res = push_to_b_stack(stacks);
