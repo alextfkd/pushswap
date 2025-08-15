@@ -6,7 +6,7 @@
 /*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 00:19:33 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/15 19:16:20 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/08/15 19:39:41 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,27 @@ int	radix_sort_stacks2(t_psstacks **stacks, int n)
 	return (0);
 }
 
+static int	_put_ranks(t_psstacks **stacks)
+{
+	int	n;
+
+	n = cdlst_len((*stacks)->stack_a);
+	//presort_stacks(stacks);
+	push_all_to_stack_a(stacks);
+	radix_sort_stacks_32th_bit(stacks, n);
+	radix_sort_stacks(stacks, n);
+	//radix_sort_stacks_X(stacks, n);
+	set_rank_for_sorted(stacks);
+	reverse_sorted(stacks);
+	delete_cdlst(&((*stacks)->stack_ops));
+	free((*stacks)->a_ops);
+	free((*stacks)->b_ops);
+	(*stacks)->stack_ops = ft_cdlstinit();
+	(*stacks)->op_count = 0;
+	return (0);
+}
+
+
 int	main(int argc, char **argv)
 {
 	t_psstacks	*stacks;
@@ -137,26 +158,10 @@ int	main(int argc, char **argv)
 		ft_perror(status);
 		exit(status);
 	}
-
 	stacks = init_stacks(argc, argv);
-	int n = cdlst_len(stacks->stack_a);
-	presort_stacks(&stacks);
+	_put_ranks(&stacks);
 	push_all_to_stack_a(&stacks);
-	//radix_sort_stacks_32th_bit(&stacks, n);
-	radix_sort_stacks_X(&stacks, n);
-	//ft_printf("!\n\n");
-	//print_stacks(stacks);
-	//ft_printf("\n\n");
-
-	set_rank_for_sorted(&stacks);
-	reverse_sorted(&stacks);
-	delete_cdlst(&(stacks->stack_ops));
-	stacks->stack_ops = ft_cdlstinit();
-	stacks->op_count = 0;
-	free(stacks->a_ops);
-	free(stacks->b_ops);
-	push_all_to_stack_a(&stacks);
-	radix_sort_stacks2(&stacks, n);
+	radix_sort_stacks2(&stacks, argc - 1);
 	print_sort_ops(&stacks);
 	free_stacks(&stacks);
 	return (0);
