@@ -6,7 +6,7 @@
 /*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 00:30:49 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/15 16:16:30 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/08/15 17:29:39 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,4 +194,5 @@ int	set_rank_for_sorted(t_psstacks **stacks);
 
 void	reverse_sorted(t_psstacks **stacks);
 int	print_sort_ops(t_psstacks **stacks);
+int	split_argv1(int *argc, char ***argv);
 #endif

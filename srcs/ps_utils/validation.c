@@ -6,7 +6,7 @@
 /*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 02:47:26 by marvin            #+#    #+#             */
-/*   Updated: 2025/07/24 18:46:47 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/08/15 17:31:42 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,28 @@ int	validate_args(int argc, char **argv)
 		}
 	}
 	return (status);
+}
+
+int	split_argv1(int *argc, char ***argv)
+{
+	char	**splitted;
+	int		i;
+	int		split_count;
+	char	**newargv;
+
+	splitted = ft_split((const char *)(*argv)[1], ' ');
+	split_count = 1;
+	i = 0;
+	while (splitted[split_count - 1] != NULL)
+		split_count++;
+	newargv = (char **)ft_calloc(sizeof(char *), split_count + 1);
+	newargv[i++] = ft_strdup((*argv)[0]);
+	while (i < split_count)
+	{
+		newargv[i] = ft_strdup(splitted[i - 1]);
+		i++;
+	}
+	*argv = newargv;
+	*argc = split_count;
+	return (0);
 }
