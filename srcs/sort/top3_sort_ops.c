@@ -6,7 +6,7 @@
 /*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 06:00:03 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/14 22:22:51 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/08/15 19:15:09 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ int	sort_top3_stacks(t_psstacks **stacks, int a_dir, int b_dir)
 
 	top3_status_a = stack_top3_status((*stacks)->stack_a);
 	top3_status_b = stack_top3_status((*stacks)->stack_b);
+	if (top3_status_a == -1 || top3_status_a == -1)
+		return (-1);
 	if (a_dir == SORT_ASC)
 		a_ops = _asc_top3_sort_ops(top3_status_a);
 	else if (a_dir == SORT_DESC)
@@ -104,6 +106,8 @@ int	sort_stack_a_top3_desc(t_psstacks **stacks)
 	char	*ops;
 
 	top3_status = stack_top3_status((*stacks)->stack_a);
+	if (top3_status == -1)
+		return (-1);
 	ops = _desc_top3_sort_ops(top3_status);
 	(*stacks)->a_ops = ops;
 	return (0);
@@ -115,6 +119,8 @@ int	sort_stack_a_top3_asc(t_psstacks **stacks)
 	char	*ops;
 
 	top3_status = stack_top3_status((*stacks)->stack_a);
+	if (top3_status == -1)
+		return (-1);
 	ops = _asc_top3_sort_ops(top3_status);
 	(*stacks)->a_ops = ops;
 	return (0);

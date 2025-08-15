@@ -6,7 +6,7 @@
 /*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 16:11:03 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/08/15 16:12:07 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/08/15 19:05:53 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,21 @@
 int	presort_stacks(t_psstacks **stacks)
 {
 	int	i;
+	int	status;
 	int	arrlen;
 
 	i = 0;
+	status = 0;
 	arrlen = cdlst_len((*stacks)->stack_a) + cdlst_len((*stacks)->stack_b);
 	while (i <= arrlen / 6)
 	{
 		w_pbn(stacks, 3);
-		asort_top3_stacks(stacks);
+		status += asort_top3_stacks(stacks);
+		if (status == -1)
+		{
+			free_stacks(stacks);
+			exit(1);
+		}
 		do_ops(stacks);
 		w_pbn(stacks, 3);
 		i++;
