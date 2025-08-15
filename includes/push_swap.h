@@ -6,7 +6,7 @@
 /*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 00:30:49 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/14 22:12:52 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/08/15 16:16:30 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
 # define FT_ENOENT 2
 # define FT_EIO 5
 # define FT_EOVERFLOW 84
+# define FT_EOPS 10
+# define MSG_EOPS "ERROR in operations."
 # define MSG_ENOENT "Invalid arg count."
 # define MSG_EIO "Invalid input."
 # define MSG_EOVERFLOW "Numerical overflow in arguments."
@@ -185,4 +187,11 @@ int	test_msort_top2(t_psstacks *sorted, int *arr, int len, int print);
 int	test_asort_top2(t_psstacks *sorted, int *arr, int len, int print);
 int	test_dsort_top2(t_psstacks *sorted, int *arr, int len, int print);
 
+int	presort_stacks(t_psstacks **stacks);
+int	push_all_to_stack_a(t_psstacks **stacks);
+int	push_all_to_stack_b(t_psstacks **stacks);
+int	set_rank_for_sorted(t_psstacks **stacks);
+
+void	reverse_sorted(t_psstacks **stacks);
+int	print_sort_ops(t_psstacks **stacks);
 #endif

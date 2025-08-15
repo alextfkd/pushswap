@@ -1,0 +1,60 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/15 16:11:03 by tkatsuma          #+#    #+#             */
+/*   Updated: 2025/08/15 16:12:07 by tkatsuma         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+int	presort_stacks(t_psstacks **stacks)
+{
+	int	i;
+	int	arrlen;
+
+	i = 0;
+	arrlen = cdlst_len((*stacks)->stack_a) + cdlst_len((*stacks)->stack_b);
+	while (i <= arrlen / 6)
+	{
+		w_pbn(stacks, 3);
+		asort_top3_stacks(stacks);
+		do_ops(stacks);
+		w_pbn(stacks, 3);
+		i++;
+	}
+	return (0);
+}
+
+int	push_all_to_stack_a(t_psstacks **stacks)
+{
+	while (cdlst_len((*stacks)->stack_b) > 0)
+		w_pa(stacks);
+	return (0);
+}
+
+int	push_all_to_stack_b(t_psstacks **stacks)
+{
+	while (cdlst_len((*stacks)->stack_a) > 0)
+		w_pb(stacks);
+	return (0);
+}
+
+int	set_rank_for_sorted(t_psstacks **stacks)
+{
+	int			i;
+	t_cdlist	*tmp;
+
+	i = 0;
+	tmp = cdlst_find_head((*stacks)->stack_a);
+	while (tmp->content != NULL)
+	{
+		tmp->content->value = i++;
+		tmp = tmp->next;
+	}
+	return (0);
+}

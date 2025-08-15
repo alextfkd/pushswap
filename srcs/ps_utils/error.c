@@ -6,7 +6,7 @@
 /*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 02:52:59 by marvin            #+#    #+#             */
-/*   Updated: 2025/07/22 16:44:52 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/08/15 15:58:38 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static int	_ft_perror_debug(int err_code)
 	msgs[FT_ENOENT] = MSG_ENOENT;
 	msgs[FT_EIO] = MSG_EIO;
 	msgs[FT_EOVERFLOW] = MSG_EOVERFLOW;
+	msgs[FT_EOPS] = MSG_EOPS;
 	ft_printf("(ERROR CODE: %d) ", err_code);
 	ft_printf("%s \n", msgs[err_code]);
 	return (err_code);
