@@ -6,7 +6,7 @@
 /*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 06:00:03 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/15 19:15:09 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/08/15 19:22:40 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,29 +72,27 @@ static char	*_asc_top3_sort_ops(int top3_status)
 
 int	sort_top3_stacks(t_psstacks **stacks, int a_dir, int b_dir)
 {
-	int		top3_status_a;
-	int		top3_status_b;
+	int		idxa;
+	int		idxb;
 	char	*a_ops;
 	char	*b_ops;
 
-	top3_status_a = stack_top3_status((*stacks)->stack_a);
-	top3_status_b = stack_top3_status((*stacks)->stack_b);
-	if (top3_status_a == -1 || top3_status_a == -1)
-		return (-1);
+	idxa = stack_top3_status((*stacks)->stack_a);
+	idxb = stack_top3_status((*stacks)->stack_b);
 	if (a_dir == SORT_ASC)
-		a_ops = _asc_top3_sort_ops(top3_status_a);
+		a_ops = _asc_top3_sort_ops(idxa);
 	else if (a_dir == SORT_DESC)
-		a_ops = _desc_top3_sort_ops(top3_status_a);
+		a_ops = _desc_top3_sort_ops(idxa);
 	else
 		a_ops = ft_strdup("");
 	if (b_dir == SORT_ASC)
-		b_ops = _asc_top3_sort_ops(top3_status_b);
+		b_ops = _asc_top3_sort_ops(idxb);
 	else if (b_dir == SORT_DESC)
-		b_ops = _desc_top3_sort_ops(top3_status_b);
+		b_ops = _desc_top3_sort_ops(idxb);
 	else
 		b_ops = ft_strdup("");
-	if (a_ops == NULL || b_ops == NULL)
-		(*stacks)->status = 1;
+	if (a_ops == NULL || b_ops == NULL || idxa == -1 || idxb == -1)
+		return (-1);
 	(*stacks)->a_ops = a_ops;
 	(*stacks)->b_ops = b_ops;
 	return (0);
