@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 00:19:33 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/18 00:22:40 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/18 20:08:13 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	radix_sort_stacks(t_psstacks **stacks, int n)
 				w_pb(stacks);
 			i++;
 		}
+		print_stacks(*stacks);
 		push_all_to_stack_a(stacks);
 		if (if_stack_a_sorted(*stacks) == 1)
 			break ;
