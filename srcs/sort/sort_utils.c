@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 16:11:03 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/08/15 19:05:53 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/08/18 00:15:23 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,22 @@ int	presort_stacks(t_psstacks **stacks)
 
 int	push_all_to_stack_a(t_psstacks **stacks)
 {
+	int	status;
+
+	status = 0;
 	while (cdlst_len((*stacks)->stack_b) > 0)
-		w_pa(stacks);
-	return (0);
+		status += w_pa(stacks);
+	return (status);
 }
 
 int	push_all_to_stack_b(t_psstacks **stacks)
 {
+	int	status;
+
+	status = 0;
 	while (cdlst_len((*stacks)->stack_a) > 0)
-		w_pb(stacks);
-	return (0);
+		status += w_pb(stacks);
+	return (status);
 }
 
 int	set_rank_for_sorted(t_psstacks **stacks)
