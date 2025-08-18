@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wrap_p.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 20:21:38 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/08/14 22:00:06 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/08/18 00:03:45 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@ int	w_pa(t_psstacks **stacks)
 	t_cdlist	*new_ops;
 
 	res = push_to_a_stack(stacks);
-	if (res == 1)
+	if (res == 0)
 	{
-		new_ops = create_cdlst_node(PA);
-		insert_nil_next(&((*stacks)->stack_ops), new_ops);
 		(*stacks)->op_count++;
+		new_ops = create_cdlst_node(PA);
+		if (new_ops == NULL)
+			return (1);
+		res += insert_nil_next(&((*stacks)->stack_ops), new_ops);
 	}
 	return (res);
 }
@@ -33,11 +35,13 @@ int	w_pb(t_psstacks **stacks)
 	t_cdlist	*new_ops;
 
 	res = push_to_b_stack(stacks);
-	if (res == 1)
+	if (res == 0)
 	{
 		(*stacks)->op_count++;
 		new_ops = create_cdlst_node(PB);
-		insert_nil_next(&((*stacks)->stack_ops), new_ops);
+		if (new_ops == NULL)
+			return (1);
+		res += insert_nil_next(&((*stacks)->stack_ops), new_ops);
 	}
 	return (res);
 }

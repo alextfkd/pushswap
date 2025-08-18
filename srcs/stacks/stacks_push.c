@@ -6,36 +6,38 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:47:07 by marvin            #+#    #+#             */
-/*   Updated: 2025/07/30 02:10:27 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/17 23:57:19 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//static int	_push_to_b_stack(t_cdlist *stack_a, t_cdlist *stack_b)
-
 static int	_push_to_b_stack(t_psstacks **stacks)
 {
+	t_cdlist	*head;
 	t_cdlist	*node;
 
 	node = cdlst_find_head((*stacks)->stack_a);
-	node = pop_cdlstnode(node);
+	if (head == NULL)
+		return (1);
+	node = pop_cdlstnode(head);
 	if (node == NULL)
-		return (0);
-	insert_nil_next(&((*stacks)->stack_b), node);
-	return (1);
+		return (1);
+	return (insert_nil_next(&((*stacks)->stack_b), node));
 }
 
 static int	_push_to_a_stack(t_psstacks **stacks)
 {
+	t_cdlist	*head;
 	t_cdlist	*node;
 
-	node = cdlst_find_head((*stacks)->stack_b);
-	node = pop_cdlstnode(node);
+	head = cdlst_find_head((*stacks)->stack_b);
+	if (head == NULL)
+		return (1);
+	node = pop_cdlstnode(head);
 	if (node == NULL)
-		return (0);
-	insert_nil_next(&((*stacks)->stack_a), node);
-	return (1);
+		return (1);
+	return (insert_nil_next(&((*stacks)->stack_a), node));
 }
 
 int	push_to_b_stack(t_psstacks **stacks)
