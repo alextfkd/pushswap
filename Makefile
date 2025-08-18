@@ -25,10 +25,6 @@ UTILS_OBJS = $(addprefix $(OBJDIR)/, $(UTILS:.c=.o))
 SORT = check_sort_status.c top3_sort.c top3_sort_ops.c sort_ops.c count_sorted.c print_sort_ops.c reverse_sort_ops.c sort_utils.c naive_radix_sort.c
 SORT_OBJS = $(addprefix $(OBJDIR)/, $(SORT:.c=.o))
 
-TEST = top3sort_test.c
-TEST_OBJS = $(addprefix $(OBJDIR)/, $(TEST:.c=.o))
-
-#SRCS += rotate_merge.c rev_rotate_merge.c
 OBJS = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
 
 CFLAGS = -Wall -Wextra -Werror
@@ -36,15 +32,15 @@ IFLAGS = -Iincludes -Ift_printf/includes -Ilibft
 LFLAGS = -Lft_printf -Llibft
 LIBFLAGS = -lft -lftprintf
 
-VPATH = $(SRCDIR):$(SRCDIR)/ft_cdlst:$(SRCDIR)/ps_wrap:$(SRCDIR)/stacks:$(SRCDIR)/ps_utils:$(SRCDIR)/sort:$(SRCDIR)/test
+VPATH = $(SRCDIR):$(SRCDIR)/ft_cdlst:$(SRCDIR)/ps_wrap:$(SRCDIR)/stacks:$(SRCDIR)/ps_utils:$(SRCDIR)/sort
 
 all: $(OBJDIR) $(NAME)
 
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
 
-$(NAME): $(LIBFT) $(FT_PRINTF) $(OBJS) $(CDLST_OBJS) $(WRAP_OBJS) $(STACKOPS_OBJS) $(UTILS_OBJS) $(SORT_OBJS) $(TEST_OBJS)
-	$(CC) $(CFLAGS) $(IFLAGS) $(OBJS)  $(CDLST_OBJS) $(WRAP_OBJS) $(STACKOPS_OBJS) $(UTILS_OBJS) $(SORT_OBJS) $(TEST_OBJS) -o $@ $(LFLAGS) $(LIBFLAGS)
+$(NAME): $(LIBFT) $(FT_PRINTF) $(OBJS) $(CDLST_OBJS) $(WRAP_OBJS) $(STACKOPS_OBJS) $(UTILS_OBJS) $(SORT_OBJS)
+	$(CC) $(CFLAGS) $(IFLAGS) $(OBJS)  $(CDLST_OBJS) $(WRAP_OBJS) $(STACKOPS_OBJS) $(UTILS_OBJS) $(SORT_OBJS) -o $@ $(LFLAGS) $(LIBFLAGS)
 
 echo :
 	echo ${SRCS}

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:47:07 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/17 23:57:19 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/18 00:31:02 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	_push_to_b_stack(t_psstacks **stacks)
 	t_cdlist	*head;
 	t_cdlist	*node;
 
-	node = cdlst_find_head((*stacks)->stack_a);
+	head = cdlst_find_head((*stacks)->stack_a);
 	if (head == NULL)
 		return (1);
 	node = pop_cdlstnode(head);
