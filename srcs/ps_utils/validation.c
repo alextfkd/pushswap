@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 02:47:26 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/15 17:31:42 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/08/18 00:21:39 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	validate_args(int argc, char **argv)
 	return (status);
 }
 
-int	split_argv1(int *argc, char ***argv)
+int	split_argv(int *argc, char ***argv)
 {
 	char	**splitted;
 	int		i;

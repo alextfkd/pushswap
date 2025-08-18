@@ -22,7 +22,7 @@ STACKOPS_OBJS = $(addprefix $(OBJDIR)/, $(STACKOPS:.c=.o))
 UTILS = error.c validation.c
 UTILS_OBJS = $(addprefix $(OBJDIR)/, $(UTILS:.c=.o))
 
-SORT = check_sort_status.c top3_sort.c top3_sort_ops.c sort_ops.c count_sorted.c print_sort_ops.c reverse_sort_ops.c sort_utils.c
+SORT = check_sort_status.c top3_sort.c top3_sort_ops.c sort_ops.c count_sorted.c print_sort_ops.c reverse_sort_ops.c sort_utils.c naive_radix_sort.c
 SORT_OBJS = $(addprefix $(OBJDIR)/, $(SORT:.c=.o))
 
 TEST = top3sort_test.c
