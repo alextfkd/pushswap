@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   top3_sort_ops.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tkatsumata <tkatsumata@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 06:00:03 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/15 19:22:40 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/08/19 13:07:56 by tkatsumata       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ static char	*_desc_top3_sort_ops(int top3_status)
 	char	*ops;
 
 	if (top3_status == ORDER_123)
-		ops = ft_strdup("sRsrs");
+		ops = ft_strdup("srsRs");
 	else if (top3_status == ORDER_132)
-		ops = ft_strdup("sRsr");
+		ops = ft_strdup("srsR");
 	else if (top3_status == ORDER_321)
 		ops = ft_strdup("");
 	else if (top3_status == ORDER_231)
 		ops = ft_strdup("s");
 	else if (top3_status == ORDER_213)
-		ops = ft_strdup("Rsrs");
+		ops = ft_strdup("rsRs");
 	else if (top3_status == ORDER_312)
-		ops = ft_strdup("Rsr");
+		ops = ft_strdup("rsR");
 	else if (top3_status == ORDER_21)
 		ops = ft_strdup("");
 	else if (top3_status == ORDER_12)
@@ -48,15 +48,15 @@ static char	*_asc_top3_sort_ops(int top3_status)
 	if (top3_status == ORDER_123)
 		ops = ft_strdup("");
 	else if (top3_status == ORDER_132)
-		ops = ft_strdup("Rsr");
+		ops = ft_strdup("rsR");
 	else if (top3_status == ORDER_321)
-		ops = ft_strdup("sRsrs");
+		ops = ft_strdup("srsRs");
 	else if (top3_status == ORDER_231)
-		ops = ft_strdup("Rsrs");
+		ops = ft_strdup("rsRs");
 	else if (top3_status == ORDER_213)
 		ops = ft_strdup("s");
 	else if (top3_status == ORDER_312)
-		ops = ft_strdup("sRsr");
+		ops = ft_strdup("srsR");
 	else if (top3_status == ORDER_21)
 		ops = ft_strdup("s");
 	else if (top3_status == ORDER_12)

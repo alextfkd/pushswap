@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 00:30:49 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/18 00:46:29 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/19 09:12:20 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,4 +175,10 @@ void		reverse_sorted(t_psstacks **stacks);
 int			print_sort_ops(t_psstacks **stacks);
 int			split_argv(int *argc, char ***argv);
 int			naive_radix_sort(t_psstacks **stacks, int n);
+int			compress_cordinates(t_psstacks **stacks);
+int			close_main(
+				t_psstacks **stacks,
+				int sflag,
+				char ***argv
+				);
 #endif
