@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 00:19:33 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/19 06:53:28 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/19 09:12:35 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@ static int	sort_len_1_2_3(t_psstacks **stacks)
 	status = 0;
 	len = cdlst_len((*stacks)->stack_a);
 	if (len == 1)
-	{
 		return (status);
-	}
 	else if (len == 2)
 	{
 		head = cdlst_find_head((*stacks)->stack_a);
@@ -35,6 +33,8 @@ static int	sort_len_1_2_3(t_psstacks **stacks)
 	{
 		status += sort_top3_stacks(stacks, SORT_ASC, SORT_DESC);
 		status += do_ops(stacks);
+		free((*stacks)->a_ops);
+		free((*stacks)->b_ops);
 		return (status);
 	}
 	else
@@ -63,11 +63,13 @@ static int	sort_len_4_5_6(t_psstacks **stacks)
 	}
 	status += sort_top3_stacks(stacks, SORT_ASC, SORT_DESC);
 	status += do_ops(stacks);
+	free((*stacks)->a_ops);
+	free((*stacks)->b_ops);
 	status += w_pan(stacks, len - 3);
 	return (status);
 }
 
-int	radix_sort_stacks(t_psstacks **stacks, int n)
+static int	radix_sort_stacks(t_psstacks **stacks, int n)
 {
 	t_cdlist	*top;
 	int			i;
@@ -99,7 +101,6 @@ static int	_sort_stacks(int *status, int argc, t_psstacks **stacks)
 {
 	if (stacks == NULL || *stacks == NULL)
 		return (*status);
-	*status += compress_cordinates(stacks);
 	if (argc == 2 || argc == 3 || argc == 4)
 		*status += sort_len_1_2_3(stacks);
 	else if (argc == 5 || argc == 6 || argc == 7)
@@ -120,27 +121,26 @@ int	main(int argc, char **argv)
 {
 	t_psstacks	*stacks;
 	int			status;
+	int			split_flag;
 
-	if (argc == 1)
-		return (0);
+	stacks = NULL;
 	status = 0;
+	split_flag = 0;
+	if (argc == 1 || (argc == 2 && argv[1][0] == '\0'))
+		return (0);
 	if (argc == 2)
-		split_argv(&argc, &argv);
+		split_flag = split_argv(&argc, &argv);
 	status += validate_args(argc, argv);
-	if (status > 0)
+	if (status == 0)
 	{
-		ft_perror(status);
-		exit(status);
+		stacks = init_stacks(argc, argv);
+		status += compress_cordinates(&stacks);
 	}
-	stacks = init_stacks(argc, argv);
-	status += _sort_stacks(&status, argc, &stacks);
-	if (status > 0)
-	{
-		ft_perror(status);
-		free_stacks(&stacks);
-		exit(status);
-	}
-	print_sort_ops(&stacks);
-	free_stacks(&stacks);
+	if (status == 0)
+		status += _sort_stacks(&status, argc, &stacks);
+	if (status == 0)
+		print_sort_ops(&stacks);
+	ft_perror(status);
+	close_main(&stacks, split_flag, &argv);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_sort_ops.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 16:07:23 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/08/15 16:12:39 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/08/19 08:55:58 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,10 @@ int	print_sort_ops(t_psstacks **stacks)
 {
 	t_cdlist	*tmp;
 
+	if (stacks == NULL || *stacks == NULL)
+		return (1);
+	if ((*stacks)->stack_ops == NULL)
+		return (1);
 	tmp = cdlst_find_tail((*stacks)->stack_ops);
 	while (tmp->content != NULL)
 	{

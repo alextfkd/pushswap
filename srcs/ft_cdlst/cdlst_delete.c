@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cdlst_delete.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkatsuma <tkatsuma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tkatsumata <tkatsumata@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 22:32:33 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/08/14 22:12:21 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/08/19 16:59:50 by tkatsumata       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	*delete_cdlst(t_cdlist **lst)
 	if (nil == NULL)
 		return (NULL);
 	current = nil->next;
-	while (current != nil)
+	while (current != NULL && current != nil)
 	{
 		tmp = current;
 		current = current->next;

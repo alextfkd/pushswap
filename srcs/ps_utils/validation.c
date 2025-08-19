@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 02:47:26 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/18 00:21:39 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/19 08:43:18 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,11 @@ int	split_argv(int *argc, char ***argv)
 	while (i < split_count)
 	{
 		newargv[i] = ft_strdup(splitted[i - 1]);
+		free(splitted[i - 1]);
 		i++;
 	}
+	free(splitted);
 	*argv = newargv;
 	*argc = split_count;
-	return (0);
+	return (1);
 }
